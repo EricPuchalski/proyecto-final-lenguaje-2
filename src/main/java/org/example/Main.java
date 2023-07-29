@@ -59,5 +59,9 @@ public class Main {
         menuPrincipal.mostrarMenuPrincipal();
         informeRepository.obtenerHistorialDeUnCliente();
 
+
+    }
+
+
     }
 }
