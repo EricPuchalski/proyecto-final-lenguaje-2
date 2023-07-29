@@ -62,7 +62,6 @@ public class MenuInforme {
                     System.out.println("El pedido numero: "+ pedido.getNumeroPedido()+ " tiene de estado: "+ pedido.getEstadoPedido());
                 }
                 break;
-
             default:
                 System.out.println("Opción inválida. Por favor, ingrese una opción válida del menú.");
                 break;
