@@ -57,10 +57,10 @@ public class Main {
 //            void upload();
 //        }
         menuPrincipal.mostrarMenuPrincipal();
-        informeRepository.obtenerHistorialDeUnCliente();
 
 
-    }
+
+    
 
 
     }
