@@ -7,13 +7,13 @@ import java.time.LocalDate;
 @Getter
 @Setter
 public class Remito {
-    private String codigoDeEnvio;
+
     private LocalDate emision;
     private Transportista transportista;
     private Empleado empleadoEmisor;
     private Empleado empleadoReceptor;
     private int calificacionTransportista;
-    private Pedido pedido;
+
 
     public Remito(LocalDate emision, Transportista transportista, Empleado empleadoEmisor, Empleado empleadoReceptor) {
 
