@@ -1,14 +1,17 @@
 package repository;
 
+import model.Cliente;
 import model.Pedido;
 
 import java.util.List;
 
 public class InformeRepository {
     private PedidoRepository pedidoRepository;
+    private ClienteRepository clienteRepository;
 
-    public InformeRepository(PedidoRepository pedidoRepository) {
+    public InformeRepository(PedidoRepository pedidoRepository, ClienteRepository clienteRepository) {
         this.pedidoRepository = pedidoRepository;
+        this.clienteRepository = clienteRepository;
     }
 
     public int obtenerCantidadPedidosPorSucursal(String codigoSucursal) {
@@ -43,12 +46,17 @@ public class InformeRepository {
                         System.out.println(linea
 
     */
-   public void obtenerHistorialDeUnCliente(){
-
+   public int obtenerHistorialDeUnCliente(String cuit){
+       Cliente clienteBuscado = clienteRepository.buscarClientePorCuit(cuit);
+       int contador = 0;
        for (Pedido pedido: pedidoRepository.obtenerTodosLosPedidos()
        ) {
-           System.out.println(pedido.getCliente().getNombre());
+           if (pedido.getCliente().getCuit().equals(clienteBuscado.getCuit()) && pedido.getEstadoPedido().equals("Entrega")){
+               contador++;
+           }
        }
+       return contador;
+
 
    }
 }

@@ -1,14 +1,18 @@
 package view;
 
+import controller.ClienteController;
 import controller.InformeController;
+import model.Cliente;
 
 import java.util.Scanner;
 
 public class MenuInforme {
     private InformeController informeController;
+    private ClienteController clienteController;
 
-    public MenuInforme(InformeController informeController) {
+    public MenuInforme(InformeController informeController, ClienteController clienteController) {
         this.informeController = informeController;
+        this.clienteController = clienteController;
     }
 
     public void mostrarMenuInforme() {
@@ -35,7 +39,16 @@ public class MenuInforme {
                 break;
 
             case "3":
-                // Volver al menú principal
+                System.out.println("Por favor ingrese el cuit del cliente: ");
+                String cuit = scanner.nextLine();
+                Cliente clienteBuscado = clienteController.buscarClientePorCuit(cuit);
+                int contador = informeController.obtenerHistorialDeUnCliente(cuit);
+                if (contador>0){
+                    System.out.println("El cliente "+ clienteBuscado.getNombre() + " " + clienteBuscado.getApellido() + " tiene: "+contador +" pedidos en su historial");
+                } else {
+                    System.out.println("El cliente "+ clienteBuscado.getNombre() + " " + clienteBuscado.getApellido() + " no tiene pedidos en su historial");
+                }
+
                 break;
 
             default:
