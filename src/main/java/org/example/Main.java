@@ -58,6 +58,7 @@ public class Main {
 //        }
         menuPrincipal.mostrarMenuPrincipal();
         informeRepository.obtenerHistorialDeUnCliente();
+        //hola nuevo comentario
     }
 
 }
