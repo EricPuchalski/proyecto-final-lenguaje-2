@@ -16,4 +16,8 @@ public class InformeService {
     public int contarPedidosEnEstadoPendiente() {
         return informeRepository.contarPedidosEnEstadoPendiente();
     }
+
+    public int obtenerHistorialDeUnCliente(String cuit){
+       return  informeRepository.obtenerHistorialDeUnCliente(cuit);
+    }
 }

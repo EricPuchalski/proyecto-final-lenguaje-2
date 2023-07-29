@@ -16,4 +16,7 @@ public class InformeController {
     public int contarPedidosEnEstadoPendiente() {
         return informeService.contarPedidosEnEstadoPendiente();
     }
+    public int obtenerHistorialDeUnCliente(String cuit){
+       return informeService.obtenerHistorialDeUnCliente(cuit);
+    }
 }
