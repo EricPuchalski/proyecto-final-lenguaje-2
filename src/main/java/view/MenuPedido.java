@@ -86,9 +86,10 @@ public class MenuPedido {
                 transportistaController.buscarTodosLosTransportistas();
                 String cuitTransportista = scanner.nextLine();
                 Transportista transportista = transportistaController.buscarTransportistaPorCuit(cuitTransportista);
-                String estadoPedido = depositoOrigen.getSectores().get(0).getDescripcion();
+
 
                 if ((transportista != null && cliente != null && depositoDestino != null && depositoDestino != null)) {
+                    String estadoPedido = depositoOrigen.getSectores().get(0).getDescripcion();
                     Seguimiento seguimiento = new Seguimiento(LocalDate.of(2023, 10, 20), depositoOrigen.getPosicion().getLatitud(), depositoOrigen.getPosicion().getLongitud());
                     Pedido pedido = new Pedido(numeroPedido,cliente,depositoOrigen,depositoDestino,transportista,estadoPedido, seguimiento);
                     pedido.setInicioPedido(LocalDate.now());
