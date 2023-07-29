@@ -26,7 +26,10 @@ public class MenuInforme {
         System.out.println("1. Mostrar cantidad de pedidos realizados por una sucursal");
         System.out.println("2. Mostrar cantidad de pedidos en estado Pendiente");
         System.out.println("3. Mostrar historial de pedidos finalizados de un cliente");
-        System.out.println("4. Mostrar todos los estados de los pedidos");
+
+        System.out.println("4. Mostrar los estados de los pedidos");
+        System.out.println("5. Salir del menu Informe");
+
 
         System.out.println("----------------------------");
         String opcion = scanner.nextLine();
@@ -62,6 +65,9 @@ public class MenuInforme {
                     System.out.println("El pedido numero: "+ pedido.getNumeroPedido()+ " tiene de estado: "+ pedido.getEstadoPedido());
                 }
                 break;
+            case"5":
+                break;
+
             default:
                 System.out.println("Opción inválida. Por favor, ingrese una opción válida del menú.");
                 break;

@@ -86,9 +86,10 @@ public class MenuPedido {
                 transportistaController.buscarTodosLosTransportistas();
                 String cuitTransportista = scanner.nextLine();
                 Transportista transportista = transportistaController.buscarTransportistaPorCuit(cuitTransportista);
-                String estadoPedido = depositoOrigen.getSectores().get(0).getDescripcion();
+
 
                 if ((transportista != null && cliente != null && depositoDestino != null && depositoDestino != null)) {
+                    String estadoPedido = depositoOrigen.getSectores().get(0).getDescripcion();
                     Seguimiento seguimiento = new Seguimiento(LocalDate.of(2023, 10, 20), depositoOrigen.getPosicion().getLatitud(), depositoOrigen.getPosicion().getLongitud());
                     Pedido pedido = new Pedido(numeroPedido,cliente,depositoOrigen,depositoDestino,transportista,estadoPedido, seguimiento);
                     pedido.setInicioPedido(LocalDate.now());
@@ -135,7 +136,7 @@ public class MenuPedido {
                 Pedido pedidoEncontrado = pedidoController.buscarPedidoPorNumero(nroPedido);
                 Empleado empleado = empleadoRepository.buscarEmpleadoPorCuit(cuitEmpleado);
 
-                if (pedidoEncontrado!=null && empleado!=null){
+                if ((pedidoEncontrado!=null && empleado!=null) && pedidoEncontrado.getEstadoPedido().equals("Pendiente")){
                     pedidoController.procesarPedido(nroPedido, cuitEmpleado);
                     System.out.println("El pedido fue procesado");
                 } else {
@@ -147,7 +148,7 @@ public class MenuPedido {
                 System.out.println("Por favor ingrese el numero del pedido para completarlo");
                 String nroPedidoCompletar = scanner.nextLine();
                 Pedido pedidoCompletarPedido = pedidoController.buscarPedidoPorNumero(nroPedidoCompletar);
-                if (pedidoCompletarPedido!=null){
+                if ((pedidoCompletarPedido!=null) && pedidoCompletarPedido.getEstadoPedido().equals("En Proceso")){
                     pedidoController.completarPedido(nroPedidoCompletar);
                     System.out.println("El pedido fue completado");
                 } else {
@@ -158,7 +159,7 @@ public class MenuPedido {
                 System.out.println("Por favor ingrese el numero del pedido para enviarlo a despacho");
                 String nroPedidoEnviarADespacho = scanner.nextLine();
                 Pedido pedidoEnviarADespacho = pedidoController.buscarPedidoPorNumero(nroPedidoEnviarADespacho);
-                if (pedidoEnviarADespacho!=null){
+                if ((pedidoEnviarADespacho!=null) && pedidoEnviarADespacho.getEstadoPedido().equals("Completo")){
                     pedidoController.enviarADespacho(nroPedidoEnviarADespacho);
                     System.out.println("El pedido fue enviado a despacho");
                 } else {
@@ -169,7 +170,7 @@ public class MenuPedido {
                 System.out.println("Por favor ingrese el número del pedido para despacharlo");
                 String nroPedidoDespacho = scanner.nextLine();
                 Pedido pedidoDespacho = pedidoController.buscarPedidoPorNumero(nroPedidoDespacho);
-                if (pedidoDespacho != null) {
+                if ((pedidoDespacho != null )&& pedidoDespacho.getEstadoPedido().equals("Esperando Despacho")) {
                     pedidoController.despacharPedido(nroPedidoDespacho);
                     System.out.println("El pedido fue despachado");
                 } else {
@@ -180,7 +181,7 @@ public class MenuPedido {
                 System.out.println("Por favor ingrese el número del pedido para enviarlo a transito");
                 String nroPedidoTransito = scanner.nextLine();
                 Pedido pedidoTransito = pedidoController.buscarPedidoPorNumero(nroPedidoTransito);
-                if (pedidoTransito != null){
+                if ((pedidoTransito != null) && pedidoTransito.getEstadoPedido().equals("Despacho")){
                     pedidoController.transitarPedido(nroPedidoTransito);
                     System.out.println("Pedido enviado a transito");
                 } else {
@@ -194,7 +195,7 @@ public class MenuPedido {
                 System.out.println("Por favor ingrese el CUIT del empleado receptor:");
                 String cuitEmpleadoReceptor = scanner.nextLine();
                     Pedido pedidoEnviarAEntrega = pedidoController.buscarPedidoPorNumero(numeroPedidoEnviarAEntrega);
-                    if (pedidoEnviarAEntrega != null && empleadoRepository.buscarEmpleadoPorCuit(cuitEmpleadoReceptor)!=null) {
+                    if ((pedidoEnviarAEntrega != null && empleadoRepository.buscarEmpleadoPorCuit(cuitEmpleadoReceptor)!=null) && pedidoEnviarAEntrega.getEstadoPedido().equals("En transito")){
                         pedidoController.enviarAEntrega(numeroPedidoEnviarAEntrega, cuitEmpleadoReceptor);
                         System.out.println("El pedido fue enviado a entrega");
                     } else {
@@ -206,7 +207,7 @@ public class MenuPedido {
                 System.out.println("Por favor ingrese el número del pedido para entregarlo");
                 String nroPedidoEntregar = scanner.nextLine();
                 Pedido pedidoEntregar = pedidoController.buscarPedidoPorNumero(nroPedidoEntregar);
-                if (pedidoEntregar != null) {
+                if ((pedidoEntregar != null) && pedidoEntregar.getEstadoPedido().equals("Esperando Entrega")){
                     List<LineaPedido> lineasPedido = pedidoEntregar.getLineasPedidos();
                     List<Integer> calificacionesProveedor = new ArrayList<>();
 
