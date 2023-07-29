@@ -2,7 +2,9 @@ package view;
 
 import controller.ClienteController;
 import controller.InformeController;
+import controller.PedidoController;
 import model.Cliente;
+import model.Pedido;
 
 import java.util.Scanner;
 
@@ -10,9 +12,12 @@ public class MenuInforme {
     private InformeController informeController;
     private ClienteController clienteController;
 
-    public MenuInforme(InformeController informeController, ClienteController clienteController) {
+    private PedidoController pedidoController;
+
+    public MenuInforme(InformeController informeController, ClienteController clienteController, PedidoController pedidoController) {
         this.informeController = informeController;
         this.clienteController = clienteController;
+        this.pedidoController = pedidoController;
     }
 
     public void mostrarMenuInforme() {
@@ -20,7 +25,7 @@ public class MenuInforme {
         System.out.println("Por favor ingrese la opción que desee: ");
         System.out.println("1. Mostrar cantidad de pedidos realizados por una sucursal");
         System.out.println("2. Mostrar cantidad de pedidos en estado Pendiente");
-        System.out.println("3. Volver al menú principal");
+        System.out.println("3. Mostrar historial de pedidos finalizados de un cliente");
 
         System.out.println("----------------------------");
         String opcion = scanner.nextLine();
@@ -48,9 +53,13 @@ public class MenuInforme {
                 } else {
                     System.out.println("El cliente "+ clienteBuscado.getNombre() + " " + clienteBuscado.getApellido() + " no tiene pedidos en su historial");
                 }
-
                 break;
-
+            case"4":
+                System.out.println("Los estados de todos los pedidos son: ");
+                for (Pedido pedido: pedidoController.mostrarTodosLosPedidos()
+                     ) {
+                    System.out.println("El pedido numero: "+ pedido.getNumeroPedido()+ " tiene de estado: "+ pedido.getEstadoPedido());
+                }
             default:
                 System.out.println("Opción inválida. Por favor, ingrese una opción válida del menú.");
                 break;

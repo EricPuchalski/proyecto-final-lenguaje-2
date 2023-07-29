@@ -20,4 +20,9 @@ public class InformeService {
     public int obtenerHistorialDeUnCliente(String cuit){
        return  informeRepository.obtenerHistorialDeUnCliente(cuit);
     }
+
+
+    public void mostrarEstadoDePedidos(){
+
+    }
 }

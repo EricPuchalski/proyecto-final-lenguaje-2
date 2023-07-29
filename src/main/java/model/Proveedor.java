@@ -20,6 +20,9 @@ public class Proveedor {
         this.pais = pais;
     }
 
+    public Proveedor(){
+
+    }
 
     @Override
     public String toString() {

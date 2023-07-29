@@ -1,17 +1,19 @@
 package repository;
 
-import model.Cliente;
-import model.Pedido;
+import model.*;
 
 import java.util.List;
 
 public class InformeRepository {
     private PedidoRepository pedidoRepository;
     private ClienteRepository clienteRepository;
+    private ProductoRepository productoRepository;
 
-    public InformeRepository(PedidoRepository pedidoRepository, ClienteRepository clienteRepository) {
+
+    public InformeRepository(PedidoRepository pedidoRepository, ClienteRepository clienteRepository, ProductoRepository productoRepository) {
         this.pedidoRepository = pedidoRepository;
         this.clienteRepository = clienteRepository;
+        this.productoRepository = productoRepository;
     }
 
     public int obtenerCantidadPedidosPorSucursal(String codigoSucursal) {
@@ -56,7 +58,12 @@ public class InformeRepository {
            }
        }
        return contador;
-
-
    }
+
+    public void mostrarEstadoDePedidos(){
+        for (Pedido pedido: pedidoRepository.obtenerTodosLosPedidos()
+             ) {
+
+        }
+    }
 }

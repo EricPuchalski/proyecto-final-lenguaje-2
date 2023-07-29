@@ -34,10 +34,10 @@ public class Main {
         MenuTransportista menuTransportista = new MenuTransportista(transportistaController, pedidoController);
         MenuProducto menuProducto = new MenuProducto(productoController);
         MenuPedido menuPedido=  new MenuPedido(pedidoController, depositoController, sectorRepository, transportistaController, productoController, clienteController, new EmpleadoRepository(),new EmpleadoService(new EmpleadoRepository()));
-        InformeRepository informeRepository=new InformeRepository(pediddoRepository, clienteRepository);
+        InformeRepository informeRepository=new InformeRepository(pediddoRepository, clienteRepository, productoRepository);
         InformeService informeService=new InformeService(informeRepository);
         InformeController informeController=new InformeController(informeService);
-        MenuInforme menuInforme=new MenuInforme(informeController, clienteController);
+        MenuInforme menuInforme=new MenuInforme(informeController, clienteController, pedidoController);
         MenuPrincipal menuPrincipal = new MenuPrincipal(menuCliente, menuTransportista, menuProducto, menuPedido,menuInforme);
 
 
