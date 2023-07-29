@@ -20,7 +20,7 @@ public class MenuInforme {
         System.out.println("Por favor ingrese la opción que desee: ");
         System.out.println("1. Mostrar cantidad de pedidos realizados por una sucursal");
         System.out.println("2. Mostrar cantidad de pedidos en estado Pendiente");
-        System.out.println("3. Volver al menú principal");
+        System.out.println("3. Mostrar historial de pedidos finalizados de un cliente");
 
         System.out.println("----------------------------");
         String opcion = scanner.nextLine();
@@ -48,7 +48,6 @@ public class MenuInforme {
                 } else {
                     System.out.println("El cliente "+ clienteBuscado.getNombre() + " " + clienteBuscado.getApellido() + " no tiene pedidos en su historial");
                 }
-
                 break;
 
             default:
