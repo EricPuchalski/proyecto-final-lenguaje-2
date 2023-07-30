@@ -23,7 +23,9 @@ public class MenuProducto {
 
     public void mostrarMenuProducto() {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("----------------------------");
         System.out.println("Por favor ingrese la opción que desee: ");
+        System.out.println("----------------------------");
         System.out.println("1. Crear Producto");
         System.out.println("2. Ver Productos");
         System.out.println("3. Ver Productos eliminados");
@@ -57,7 +59,10 @@ public class MenuProducto {
                         System.out.println("Por favor ingrese el largo del producto");
                         largoProducto = scanner.nextDouble();
                     } else {
+                        System.out.println("----------------------------");
                         System.out.println("El producto ingresado ya existe");
+                        System.out.println("----------------------------");
+                        break;
                     }
                     scanner.nextLine();
                     System.out.println("Por favor ingrese la Categoria del producto");
@@ -103,8 +108,14 @@ public class MenuProducto {
                             System.out.println("No existe esa categoria de producto");
                             break;
                     }
+                    if (proveedorDelProducto!=null && categoriaProducto!=null){
+                        productoController.create(new Producto(codigo, nombre, anchoProducto, alturaProducto, largoProducto, peso, categoriaProducto, proveedorDelProducto));
+                        System.out.println("Producto creado exitosamente");
+                    } else {
+                        System.out.println("La creación del producto falló");
+                    }
 
-                    productoController.create(new Producto(codigo, nombre, anchoProducto, alturaProducto, largoProducto, peso, categoriaProducto, proveedorDelProducto));
+
                     break;
                 case "2":
                     System.out.println("============== La lista de Productos actuales es: ===============");
@@ -119,6 +130,7 @@ public class MenuProducto {
                     String codigoProducto = scanner.nextLine();
                     if (productoController.findOne(codigoProducto) != null)
                         System.out.println("El producto es: " + productoController.findOne(codigoProducto));
+                    else System.out.println("El codigo ingresado no coincide con ningún producto");
                     break;
                 case "5":
                     System.out.println("Por favor ingrese el coodigo del producto a editar: ");
