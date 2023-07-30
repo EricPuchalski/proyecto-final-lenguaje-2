@@ -18,6 +18,7 @@ public class MenuCliente {
     public void mostrarMenuCliente() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Por favor ingrese la opción que desee: ");
+        System.out.println("----------------------------");
         System.out.println("1. Crear cliente");
         System.out.println("2. Ver clientes");
         System.out.println("3. Ver clientes eliminados");
@@ -60,9 +61,13 @@ public class MenuCliente {
                     System.out.println("Por favor ingrese el CUIT del cliente");
                     String cuitCliente = scanner.nextLine();
                     if (clienteController.findOne(cuitCliente) != null) {
+                        System.out.println("----------------------------");
                         System.out.println(clienteController.findOne(cuitCliente).toString());
+                        System.out.println("----------------------------");
                     } else {
+                        System.out.println("----------------------------");
                         System.out.println("No existe un cliente con ese cuit");
+                        System.out.println("----------------------------");
                     }
 
                     break;
