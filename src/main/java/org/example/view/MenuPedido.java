@@ -83,19 +83,14 @@ public class MenuPedido {
                         String codigoDepositoDestino = scanner.nextLine();
                         Deposito depositoDestino = depositoController.findOne(codigoDepositoDestino);
 
-
                         System.out.println("Por favor seleccione el transportista");
                         transportistaController.findAll();
                         String cuitTransportista = scanner.nextLine();
 
                         Transportista transportista = transportistaController.findOne(cuitTransportista);
 
-
-                        String estadoPedido = depositoOrigen.getSectores().get(0).getDescripcion();
-
-
                         if ((transportista != null && cliente != null && depositoOrigen != null && depositoDestino != null)) {
-
+                            String estadoPedido = depositoOrigen.getSectores().get(0).getDescripcion();
                             Seguimiento seguimiento = new Seguimiento(LocalDate.of(2023, 10, 20), depositoOrigen.getPosicion().getLatitud(), depositoOrigen.getPosicion().getLongitud());
                             Pedido pedido = new Pedido(numeroPedido, cliente, depositoOrigen, depositoDestino, transportista, estadoPedido, seguimiento);
                             pedido.setInicioPedido(LocalDate.now());
@@ -126,7 +121,9 @@ public class MenuPedido {
                             }
                             pedidoController.crearPedido(pedido);
                         } else {
+                            System.out.println("----------------------------");
                             System.out.println("Error, vuelva a intentarlo nuevamente");
+                            System.out.println("----------------------------");
                             break;
                         }
 
@@ -147,7 +144,9 @@ public class MenuPedido {
                             pedidoController.procesarPedido(nroPedido, cuitEmpleado);
                             System.out.println("El pedido fue procesado");
                         } else {
+                            System.out.println("----------------------------");
                             System.out.println("El pedido no se pudo procesar, intentelo nuevamente");
+                            System.out.println("----------------------------");
                         }
                         break;
 
@@ -159,7 +158,9 @@ public class MenuPedido {
                             pedidoController.completarPedido(nroPedidoCompletar);
                             System.out.println("El pedido fue completado");
                         } else {
+                            System.out.println("----------------------------");
                             System.out.println("El pedido no se pudo completar, intentelo nuevamente");
+                            System.out.println("----------------------------");
                         }
                         break;
                     case 4:
@@ -170,7 +171,9 @@ public class MenuPedido {
                             pedidoController.enviarADespacho(nroPedidoEnviarADespacho);
                             System.out.println("El pedido fue enviado a despacho");
                         } else {
+                            System.out.println("----------------------------");
                             System.out.println("El pedido no se pudo enviar a despacho, intentelo nuevamente");
+                            System.out.println("----------------------------");
                         }
                         break;
                     case 5:
@@ -181,7 +184,9 @@ public class MenuPedido {
                             pedidoController.despacharPedido(nroPedidoDespacho);
                             System.out.println("El pedido fue despachado");
                         } else {
+                            System.out.println("----------------------------");
                             System.out.println("El pedido no se encontró, intentelo nuevamente");
+                            System.out.println("----------------------------");
                         }
                         break;
                     case 6:
@@ -192,7 +197,9 @@ public class MenuPedido {
                             pedidoController.transitarPedido(nroPedidoTransito);
                             System.out.println("El pedido fue enviado a transito");
                         } else {
+                            System.out.println("----------------------------");
                             System.out.println("El pedido no se encontró, intentelo nuevamente");
+                            System.out.println("----------------------------");
                         }
 
                         break;
@@ -209,7 +216,9 @@ public class MenuPedido {
                             pedidoController.enviarAEntrega(numeroPedidoEnviarAEntrega, cuitEmpleadoReceptor);
                             System.out.println("El pedido fue enviado a entrega");
                         } else {
+                            System.out.println("----------------------------");
                             System.out.println("El pedido no se encontró, intentelo nuevamente");
+                            System.out.println("----------------------------");
                         }
                         break;
 
@@ -232,7 +241,9 @@ public class MenuPedido {
                             System.out.println("El pedido fue entregado");
                             System.out.println(pedidoEntregar.toString());
                         } else {
+                            System.out.println("----------------------------");
                             System.out.println("El pedido no se encontró, intentelo nuevamente");
+                            System.out.println("----------------------------");
                         }
                         break;
                     case 9:
@@ -248,7 +259,9 @@ public class MenuPedido {
                                     , pedidoDistancia.getDepositoDestino().getPosicion().getLatitud()
                                     , pedidoDistancia.getDepositoDestino().getPosicion().getLongitud())) + " kms de la sucursal destino");
                         } else {
+                            System.out.println("----------------------------");
                             System.out.println("El pedido no se encontró, intentelo nuevamente");
+                            System.out.println("----------------------------");
                         }
 
                     case 10:
