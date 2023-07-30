@@ -64,6 +64,7 @@ public class MenuPrincipal {
                     break;
                 case "7":
                     System.out.println("Ha salido exitosamente");
+                    salir = true;
                     break;
                 default:
                     System.out.println("Opcion invalida");

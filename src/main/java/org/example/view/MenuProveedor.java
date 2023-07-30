@@ -15,7 +15,6 @@ public class MenuProveedor {
 
     public void mostrarMenuProveedor(){
         Scanner leer = new Scanner(System.in);
-        Boolean salir = false;
 
 
             System.out.println("=============== Menu ====================");

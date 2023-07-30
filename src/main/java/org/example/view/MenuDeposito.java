@@ -10,7 +10,6 @@ public class MenuDeposito {
 
     private DepositoController depositoController;
     private String opcion;
-    private boolean salir = false;
 
     public MenuDeposito(DepositoController depositoController) {
         this.depositoController = depositoController;

@@ -33,7 +33,7 @@ public class MenuTransportista {
         System.out.println("----------------------------");
 
         String opcion = scanner.nextLine();
-        boolean salir = false;
+
 
 
             switch (opcion) {

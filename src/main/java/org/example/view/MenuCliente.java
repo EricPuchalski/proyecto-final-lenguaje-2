@@ -10,7 +10,6 @@ public class MenuCliente {
 
     private ClienteController clienteController;
     private String opcion;
-    boolean salir = false;
 
     public MenuCliente(ClienteController clienteController) {
         this.clienteController = clienteController;

@@ -33,7 +33,7 @@ public class MenuProducto {
         System.out.println("7. Salir del Menu de producto");
         System.out.println("----------------------------");
         this.opcion = scanner.nextLine();
-        boolean salir = false;
+
 
             switch (opcion) {
                 case "1":
