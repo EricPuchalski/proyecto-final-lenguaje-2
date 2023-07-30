@@ -22,11 +22,7 @@ public class DepositoService implements CRUD<Deposito>{
     }
 
     public List<Deposito> findAll() {
-        List<Deposito> depositoList = new ArrayList<>();
-        for (Deposito dp : depositoRepository.findAll()) {
-            System.out.println(dp.toString());
-        }
-        return depositoList;
+       return depositoRepository.findAll();
     }
 
 

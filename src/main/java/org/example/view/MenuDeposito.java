@@ -1,6 +1,7 @@
 package org.example.view;
 
 import org.example.controller.DepositoController;
+import org.example.model.Cliente;
 import org.example.model.Deposito;
 import org.example.model.Posicion;
 
@@ -53,7 +54,9 @@ public class MenuDeposito {
                     }
                     break;
                 case "2":
-                    depositoController.findAll();
+                    for (Deposito dp: depositoController.findAll()) {
+                        System.out.println(dp.toString());
+                    }
                     break;
                 case "3":
                     System.out.println("Por favor ingrese el código del depósito");

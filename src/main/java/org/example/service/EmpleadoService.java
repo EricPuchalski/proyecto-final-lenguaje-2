@@ -52,11 +52,7 @@ public class EmpleadoService implements CRUD<Empleado>{
 
     @Override
     public List<Empleado> findAll() {
-        List<Empleado>empleadoList = new ArrayList<>();
-        for(Empleado er : empleadoRepository.findAll()){
-            System.out.println(er.toString());
-        }
-        return empleadoList;
+        return empleadoRepository.findAll();
     }
 
 

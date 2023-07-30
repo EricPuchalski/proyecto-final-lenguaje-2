@@ -51,7 +51,10 @@ public class MenuCliente {
                     break;
                 case "2":
                     System.out.println("============== La lista de Clientes actuales es: ===============");
-                    clienteController.findAll();
+                    for (Cliente cl: clienteController.findAll()) {
+                        System.out.println(cl.toString());
+                    }
+
                     break;
                 case "3":
                     System.out.println("Por favor ingrese el CUIT del cliente");

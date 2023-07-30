@@ -3,6 +3,8 @@ package org.example.controller;
 import org.example.model.Transportista;
 import org.example.service.TransportistaService;
 
+import java.util.List;
+
 public class TransportistaController {
     private TransportistaService transportistaService;
 
@@ -22,8 +24,8 @@ public class TransportistaController {
         transportistaService.delete(cuit);
     }
 
-    public void findAll(){
-        transportistaService.findAll();
+    public List<Transportista> findAll(){
+       return transportistaService.findAll();
     }
 
     public void upDate(Transportista transportista) {
