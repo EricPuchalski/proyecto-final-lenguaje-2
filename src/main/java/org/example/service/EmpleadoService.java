@@ -14,7 +14,7 @@ public class EmpleadoService implements CRUD<Empleado>{
     public EmpleadoService(EmpleadoRepository empleadoRepository) {
         this.empleadoRepository = new EmpleadoRepository();
     }
-    
+
 
     @Override
     public void save(Empleado empleado) {
