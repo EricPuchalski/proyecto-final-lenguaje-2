@@ -82,6 +82,7 @@ public class MenuCliente {
                         String nuevaDireccion = scanner.nextLine();
                         System.out.println("Por favor ingrese el telefono nuevo");
                         String nuevoTelefono = scanner.nextLine();
+                        System.out.println("Cliente editado correctamente");
                         clienteController.upDate(new Cliente(cuitClienteEditar, nuevoNombre, nuevoApellido, nuevaDireccion, nuevoTelefono));
                     } else {
                         System.out.println("El cuit ingresado es inexistente");

@@ -85,7 +85,7 @@ public class MenuDeposito {
                         Double nlat = scanner.nextDouble();
                         System.out.println("Por favor ingrese la nueva longitud del depósito");
                         Double nlon = scanner.nextDouble();
-
+                        System.out.println("Deposito editado correctamente");
                         depositoController.upDate(new Deposito(codigoDepositoEditar, nuevoNombre, nuevaDireccion, nuevoTelefono, nuevoEmail, nuevoContinente, new Posicion(nlat, nlon)));
                     } else {
                         System.out.println("El código del depósito ingresado es inexistente");
