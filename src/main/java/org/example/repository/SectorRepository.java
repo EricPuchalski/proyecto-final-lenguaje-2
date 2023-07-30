@@ -11,10 +11,10 @@ import java.util.List;
 @Getter
 @Setter
 
-public class SectorController implements CRUD<Sector>{
+public class SectorRepository implements CRUD<Sector>{
     private List<Sector> sectores;
 
-    public SectorController() {
+    public SectorRepository() {
         sectores = new ArrayList<>();
         upLoad();
     }

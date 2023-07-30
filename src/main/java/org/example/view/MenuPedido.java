@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class MenuPedido {
      PedidoController pedidoController;
      DepositoController depositoController;
-     SectorController sectorController;
+     SectorRepository sectorRepository;
      TransportistaController transportistaController;
      ProductoController productoController;
 
@@ -27,7 +27,7 @@ public class MenuPedido {
     public MenuPedido(PedidoController pedidoController) {
         this.pedidoController = pedidoController;
         this.depositoController = new DepositoController(new DepositoService(new DepositoRepository()));
-        this.sectorController = new SectorController();
+        this.sectorRepository = new SectorRepository();
         this.transportistaController = new TransportistaController(new TransportistaService(new TransportistaRepository()));
         this.productoController = new ProductoController(new ProductoService(new ProductoRepository()));
         this.clienteController = new ClienteController(new ClienteService(new ClienteRepository()));
@@ -51,10 +51,12 @@ public class MenuPedido {
 
         System.out.println("----------------------------");
         int opcion = scanner.nextInt();
+        scanner.nextLine();
         switch(opcion) {
             case 1:
                 System.out.println("Por favor ingrese el numero del pedido");
                 String numeroPedido = scanner.nextLine();
+
                 System.out.println("Por favor seleccione el cliente del pedido");
                 clienteController.findAll();
                 String cuitCliente = scanner.next();
@@ -183,7 +185,7 @@ public class MenuPedido {
                 Pedido pedidoTransito = pedidoController.buscarPedidoPorNumero(nroPedidoTransito);
                 if ((pedidoTransito != null) && pedidoTransito.getEstadoPedido().equals("Despacho")){
                     pedidoController.transitarPedido(nroPedidoTransito);
-                    System.out.println("Pedido enviado a transito");
+                    System.out.println("El pedido fue enviado a transito");
                 } else {
                     System.out.println("El pedido no se encontró, intentelo nuevamente");
                 }

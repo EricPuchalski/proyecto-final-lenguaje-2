@@ -1,6 +1,7 @@
 package org.example.repository;
 
 
+import org.example.model.Cliente;
 import org.example.model.Pedido;
 
 
@@ -51,7 +52,7 @@ public class InformeRepository {
 
     */
    public int obtenerHistorialDeUnCliente(String cuit){
-       Cliente clienteBuscado = clienteRepository.buscarClientePorCuit(cuit);
+       Cliente clienteBuscado = clienteRepository.findOne(cuit);
        int contador = 0;
        for (Pedido pedido: pedidoRepository.obtenerTodosLosPedidos()
        ) {

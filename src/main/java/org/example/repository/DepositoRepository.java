@@ -12,10 +12,10 @@ import java.util.List;
 @Getter
 public class DepositoRepository implements CRUD<Deposito>{
     private List<Deposito> depositos;
-    private SectorController sectorRepository;
+    private SectorRepository sectorRepository;
     public DepositoRepository() {
         this.depositos = new ArrayList<>();
-        this.sectorRepository = new SectorController();
+        this.sectorRepository = new SectorRepository();
         upLoad();
     }
 

@@ -1,6 +1,7 @@
 package org.example.service;
 
 import org.example.model.Cliente;
+import org.example.model.Deposito;
 import org.example.repository.ClienteRepository;
 
 import java.util.ArrayList;
@@ -37,12 +38,15 @@ public class  ClienteService implements CRUD<Cliente>{
     }
     public Cliente findOne(String cuit){
         Cliente cliente = null;
-        if (findOne(cuit)!= null) {
-            Cliente cl = clienteRepository.findOne(cuit);
-            cliente = cl;
+        if (clienteRepository.findOne(cuit)!=null) {
+            cliente = clienteRepository.findOne(cuit);
+
         }
         return cliente;
+
     }
+
+
     public void upDate(Cliente cliente){
         if(findOne(cliente.getCuit()) != null){
             clienteRepository.upDate(cliente);

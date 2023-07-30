@@ -9,11 +9,11 @@ import java.util.List;
 public class PedidoRepository {
     private List<Pedido> pedidos;
     private List<LineaPedido> lineaPedidos;
-    private SectorController sectorRepository;
+    private SectorRepository sectorRepository;
     private EmpleadoRepository empleadoRepository;
     public PedidoRepository() {
         pedidos = new ArrayList<>();
-        this.sectorRepository = new SectorController();
+        this.sectorRepository = new SectorRepository();
         this.empleadoRepository = new EmpleadoRepository();
     }
 

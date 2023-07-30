@@ -1,5 +1,6 @@
 package org.example.service;
 
+import org.example.model.Deposito;
 import org.example.model.Producto;
 import org.example.model.Proveedor;
 import org.example.repository.ProductoRepository;
@@ -39,12 +40,13 @@ public class ProductoService implements CRUD<Producto>{
 
     public Producto findOne(String codigo) {
         Producto producto = null;
-        if (findOne(codigo) != null) {
-            Producto pr = productoRepository.findOne(codigo);
-            producto = pr;
+        if (productoRepository.findOne(codigo) != null) {
+             producto = productoRepository.findOne(codigo);
+
         }
         return producto;
     }
+
 
     public void upDate(Producto producto) {
         if (findOne(producto.getCodigo()) != null) {

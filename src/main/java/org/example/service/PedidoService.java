@@ -4,7 +4,7 @@ import org.example.model.LineaPedido;
 import org.example.model.Pedido;
 import org.example.repository.EmpleadoRepository;
 import org.example.repository.PedidoRepository;
-import org.example.repository.SectorController;
+import org.example.repository.SectorRepository;
 import org.example.repository.TransportistaRepository;
 
 
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PedidoService {
-    private SectorController sectorRepository;
+    private SectorRepository sectorRepository;
     private TransportistaRepository transportistaRepository;
     private PedidoRepository pedidoRepository;
 
@@ -21,7 +21,7 @@ public class PedidoService {
     private Pedido pedido;
 
     public PedidoService( PedidoRepository pedidoRepository) {
-        this.sectorRepository = new SectorController();
+        this.sectorRepository = new SectorRepository();
         this.transportistaRepository = new TransportistaRepository();
         this.pedidoRepository=pedidoRepository;
         this.empleadoRepository = new EmpleadoRepository();

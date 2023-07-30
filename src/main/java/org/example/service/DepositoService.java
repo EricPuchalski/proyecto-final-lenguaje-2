@@ -1,5 +1,6 @@
 package org.example.service;
 
+import org.example.model.Cliente;
 import org.example.model.Deposito;
 import org.example.model.Sector;
 import org.example.repository.DepositoRepository;
@@ -38,12 +39,12 @@ public class DepositoService implements CRUD<Deposito>{
 
     public Deposito findOne(String codigo) {
         Deposito deposito = null;
-        if (findOne(codigo) != null) {
-            Deposito dp = depositoRepository.findOne(codigo);
-            deposito = dp;
+        if (depositoRepository.findOne(codigo) != null) {
+            deposito = depositoRepository.findOne(codigo);
         }
         return deposito;
     }
+
 
     public void upDate(Deposito deposito) {
         if (findOne(deposito.getCodigo()) != null) {

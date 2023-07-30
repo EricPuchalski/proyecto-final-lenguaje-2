@@ -1,6 +1,7 @@
 package org.example.service;
 
 import org.example.model.Cliente;
+import org.example.model.Deposito;
 import org.example.model.Empleado;
 import org.example.repository.EmpleadoRepository;
 
@@ -41,12 +42,13 @@ public class EmpleadoService implements CRUD<Empleado>{
     @Override
     public Empleado findOne(String cuit) {
         Empleado empleado = null;
-        if (findOne(cuit)!= null) {
-            Empleado em = empleadoRepository.findOne(cuit);
-            empleado = em;
+        if (empleadoRepository.findOne(cuit)!= null) {
+           empleado = empleadoRepository.findOne(cuit);
+
         }
         return empleado;
     }
+
 
     @Override
     public List<Empleado> findAll() {

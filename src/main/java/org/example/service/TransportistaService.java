@@ -1,6 +1,7 @@
 package org.example.service;
 
 
+import org.example.model.Deposito;
 import org.example.model.Transportista;
 import org.example.repository.TransportistaRepository;
 
@@ -34,12 +35,13 @@ public class TransportistaService implements CRUD<Transportista>{
     @Override
     public Transportista findOne(String cuit) {
         Transportista transportista= null;
-        if (findOne(cuit)!= null) {
-            Transportista tr = transportistaRepository.findOne(cuit);
-            transportista = tr;
+        if (transportistaRepository.findOne(cuit)!= null) {
+            transportista= transportistaRepository.findOne(cuit);
+
         }
         return transportista;
     }
+
 
     @Override
     public List<Transportista> findAll() {
