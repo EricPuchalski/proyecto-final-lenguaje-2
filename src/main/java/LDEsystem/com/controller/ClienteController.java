@@ -2,10 +2,11 @@ package LDEsystem.com.controller;
 
 import LDEsystem.com.model.Cliente;
 import LDEsystem.com.service.ClienteService;
+import LDEsystem.com.util.CRUD;
 
 import java.util.List;
 
-public class ClienteController implements CRUD<Cliente>{
+public class ClienteController implements CRUD<Cliente> {
 
     private final ClienteService clienteService;
 
@@ -31,7 +32,7 @@ public class ClienteController implements CRUD<Cliente>{
         clienteService.delete(cuit);
     }
 
-    public  void create(Cliente cliente){
+    public  void save(Cliente cliente){
         clienteService.save(cliente);
     }
     public void upDate(Cliente cliente) {

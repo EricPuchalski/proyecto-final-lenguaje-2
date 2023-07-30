@@ -2,10 +2,11 @@ package LDEsystem.com.controller;
 
 import LDEsystem.com.model.Deposito;
 import LDEsystem.com.service.DepositoService;
+import LDEsystem.com.util.CRUD;
 
 import java.util.List;
 
-public class DepositoController implements CRUD<Deposito>{
+public class DepositoController implements CRUD<Deposito> {
     private DepositoService depositoService;
 
     public DepositoController(DepositoService depositoService) {
@@ -13,7 +14,7 @@ public class DepositoController implements CRUD<Deposito>{
     }
 
     @Override
-    public void create(Deposito deposito) {
+    public void save(Deposito deposito) {
         depositoService.save(deposito);
     }
 

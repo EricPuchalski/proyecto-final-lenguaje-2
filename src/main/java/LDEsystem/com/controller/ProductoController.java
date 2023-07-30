@@ -2,10 +2,11 @@ package LDEsystem.com.controller;
 
 import LDEsystem.com.model.Producto;
 import LDEsystem.com.service.ProductoService;
+import LDEsystem.com.util.CRUD;
 
 import java.util.List;
 
-public class ProductoController implements CRUD<Producto>{
+public class ProductoController implements CRUD<Producto> {
     private final ProductoService productoService;
 
     public ProductoController(ProductoService productoService) {
@@ -14,7 +15,7 @@ public class ProductoController implements CRUD<Producto>{
 
 
 
-    public void create(Producto producto){
+    public void save(Producto producto){
         productoService.save(producto);
     }
 

@@ -2,10 +2,11 @@ package LDEsystem.com.controller;
 
 import LDEsystem.com.service.EmpleadoService;
 import LDEsystem.com.model.Empleado;
+import LDEsystem.com.util.CRUD;
 
 import java.util.List;
 
-public class EmpleadoController implements  CRUD<Empleado> {
+public class EmpleadoController implements CRUD<Empleado> {
     EmpleadoService empleadoService;
 
     public EmpleadoController(EmpleadoService empleadoService) {
@@ -13,7 +14,7 @@ public class EmpleadoController implements  CRUD<Empleado> {
     }
 
     @Override
-    public void create(Empleado empleado) {
+    public void save(Empleado empleado) {
         empleadoService.save(empleado);
     }
 

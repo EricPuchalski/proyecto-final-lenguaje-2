@@ -66,7 +66,7 @@ public class MenuTransportista {
                             default:
                                 System.out.println("No existe ese tipo de transportista");
                         }
-                        transportistaController.create(new Transportista(cuit, nombre, telefono, email, tipoTransportista));
+                        transportistaController.save(new Transportista(cuit, nombre, telefono, email, tipoTransportista));
                     } else {
                         System.out.println("El transportista ya existe");
                     }

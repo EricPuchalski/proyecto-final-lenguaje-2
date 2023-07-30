@@ -48,7 +48,7 @@ public class MenuDeposito {
                         System.out.println("Por favor ingrese la longitud del depósito");
                         Double lon = scanner.nextDouble();
 
-                        depositoController.create(new Deposito(codigo, nombre, direccion, telefono, email, continente, new Posicion(lat, lon)));
+                        depositoController.save(new Deposito(codigo, nombre, direccion, telefono, email, continente, new Posicion(lat, lon)));
                     } else {
                         System.out.println("El depósito ingresado ya existe.");
                     }

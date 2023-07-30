@@ -104,7 +104,7 @@ public class MenuProducto {
                             break;
                     }
 
-                    productoController.create(new Producto(codigo, nombre, anchoProducto, alturaProducto, largoProducto, peso, categoriaProducto, proveedorDelProducto));
+                    productoController.save(new Producto(codigo, nombre, anchoProducto, alturaProducto, largoProducto, peso, categoriaProducto, proveedorDelProducto));
                     break;
                 case "2":
                     System.out.println("============== La lista de Productos actuales es: ===============");

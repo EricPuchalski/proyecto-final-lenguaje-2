@@ -1,7 +1,6 @@
 package LDEsystem.com.repository;
 
 import LDEsystem.com.model.*;
-import org.example.model.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

@@ -2,17 +2,21 @@ package LDEsystem.com.controller;
 
 import LDEsystem.com.model.Transportista;
 import LDEsystem.com.service.TransportistaService;
+import LDEsystem.com.util.CRUD;
 
-public class TransportistaController {
+import java.util.List;
+
+public class TransportistaController implements CRUD<Transportista> {
     private TransportistaService transportistaService;
 
     public TransportistaController(TransportistaService transportistaService) {
         this.transportistaService = transportistaService;
     }
 
-    public void create(Transportista transportista){
+    public void save(Transportista transportista){
         transportistaService.save(transportista);
     }
+
 
     public Transportista findOne(String cuit){
         return transportistaService.findOne(cuit);
@@ -22,12 +26,13 @@ public class TransportistaController {
         transportistaService.delete(cuit);
     }
 
-    public void findAll(){
-        transportistaService.findAll();
+    public List<Transportista> findAll(){
+        return transportistaService.findAll();
     }
-    public void findAllOff(){
-        transportistaService.findAllOff();
+    public List<Transportista> findAllOff(){
+        return transportistaService.findAllOff();
     }
+
 
     public void upDate(Transportista transportista) {
         transportistaService.upDate(transportista);

@@ -2,6 +2,7 @@ package LDEsystem.com.controller;
 
 import LDEsystem.com.model.Proveedor;
 import LDEsystem.com.service.ProveedorService;
+import LDEsystem.com.util.CRUD;
 
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class ProveedorController implements CRUD<Proveedor> {
         proveedorService.delete(cuit);
     }
 
-    public void create(Proveedor proveedor) {
+    public void save(Proveedor proveedor) {
         proveedorService.save(proveedor);
     }
 

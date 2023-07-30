@@ -42,7 +42,7 @@ public class MenuCliente {
                         System.out.println("Por favor ingrese el telefono");
                         String telefono = scanner.nextLine();
 
-                        clienteController.create(new Cliente(cuit, nombre, apellido, direccion, telefono));
+                        clienteController.save(new Cliente(cuit, nombre, apellido, direccion, telefono));
                     } else {
                         System.out.println("El cliente ingresado ya existe.");
                     }

@@ -2,23 +2,27 @@ package LDEsystem.com.view;
 
 
 import LDEsystem.com.controller.ClienteController;
+import LDEsystem.com.controller.DepositoController;
 import LDEsystem.com.controller.InformeController;
 import LDEsystem.com.controller.PedidoController;
 import LDEsystem.com.model.Cliente;
 import LDEsystem.com.model.Pedido;
+import LDEsystem.com.repository.DepositoRepository;
+import LDEsystem.com.service.DepositoService;
 
 import java.util.Scanner;
 
 public class MenuInforme {
     private InformeController informeController;
     private ClienteController clienteController;
-
+    private DepositoController depositoController;
     private PedidoController pedidoController;
 
     public MenuInforme(InformeController informeController, ClienteController clienteController, PedidoController pedidoController) {
         this.informeController = informeController;
         this.clienteController = clienteController;
         this.pedidoController = pedidoController;
+        depositoController = new DepositoController(new DepositoService(new DepositoRepository()));
     }
 
     public void mostrarMenuInforme() {
@@ -39,8 +43,13 @@ public class MenuInforme {
             case "1":
                 System.out.println("Por favor ingrese el código de la sucursal para obtener la cantidad de pedidos realizados:");
                 String codigoSucursal = scanner.nextLine();
-                int cantidadPedidos = informeController.obtenerCantidadPedidosPorSucursal(codigoSucursal);
-                System.out.println("La cantidad de pedidos realizados por la sucursal con código " + codigoSucursal + " es: " + cantidadPedidos);
+                if(depositoController.findOne(codigoSucursal)!=null) {
+                    int cantidadPedidos = informeController.obtenerCantidadPedidosPorSucursal(codigoSucursal);
+                    System.out.println("La cantidad de pedidos realizados por la sucursal con código " + codigoSucursal + " es: " + cantidadPedidos);
+                }else{
+                    System.out.println("el codigo es erroneo");
+                    System.out.println("////////////////////////////////////////////");
+                }
                 break;
 
             case "2":

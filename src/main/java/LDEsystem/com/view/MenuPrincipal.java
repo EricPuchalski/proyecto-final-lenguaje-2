@@ -3,9 +3,6 @@ package LDEsystem.com.view;
 import LDEsystem.com.controller.*;
 import LDEsystem.com.repository.*;
 import LDEsystem.com.service.*;
-import org.example.controller.*;
-import org.example.repository.*;
-import org.example.service.*;
 
 import java.util.Scanner;
 

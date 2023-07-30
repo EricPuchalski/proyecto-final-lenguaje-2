@@ -40,7 +40,7 @@ public class MenuProveedor {
                         String tel = leer.nextLine();
                         System.out.println("Inrese el numero de email del proveedor: ");
                         String email = leer.nextLine();
-                        proveedorController.create(new Proveedor(cuit, nombre, direc, tel, email));
+                        proveedorController.save(new Proveedor(cuit, nombre, direc, tel, email));
                     }else{
                         System.out.println("El proveedor ya existe");
                     }

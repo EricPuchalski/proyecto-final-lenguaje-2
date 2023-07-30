@@ -4,10 +4,7 @@ import LDEsystem.com.controller.*;
 import LDEsystem.com.model.*;
 import LDEsystem.com.repository.*;
 import LDEsystem.com.service.*;
-import org.example.controller.*;
-import org.example.model.*;
-import org.example.repository.*;
-import org.example.service.*;
+
 import LDEsystem.com.util.CalcularDistancia;
 
 import java.time.LocalDate;
