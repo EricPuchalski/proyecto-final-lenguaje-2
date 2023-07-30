@@ -28,6 +28,7 @@ public class MenuPrincipal {
 
     public void mostrarMenuPrincipal() {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("BIENVENIDO AL SITEMA DE LyDE ");
         System.out.println("----------------------------");
         System.out.println("Por favor ingrese la opción que desea gestionar: ");
         System.out.println("----------------------------");
