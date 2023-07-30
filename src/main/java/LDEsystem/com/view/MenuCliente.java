@@ -43,8 +43,11 @@ public class MenuCliente {
                         String telefono = scanner.nextLine();
 
                         clienteController.save(new Cliente(cuit, nombre, apellido, direccion, telefono));
+                        System.out.println("Ha sido creado exitosamente");
+                        System.out.println("================================================================");
                     } else {
                         System.out.println("El cliente ingresado ya existe.");
+                        System.out.println("================================================================");
                     }
 
 
@@ -52,10 +55,12 @@ public class MenuCliente {
                 case "2":
                     System.out.println("============== La lista de Clientes actuales es: ===============");
                     clienteController.findAll();
+                    System.out.println("================================================================");
                     break;
                 case "3":
-                    System.out.println("============== La lista de Proveedores eliminados es: ===============");
+                    System.out.println("============== La lista de Clientes eliminados es: ===============");
                     clienteController.findAllOff();
+                    System.out.println("================================================================");
                 case "4":
                     System.out.println("Por favor ingrese el CUIT del cliente");
                     String cuitCliente = scanner.nextLine();
@@ -79,8 +84,11 @@ public class MenuCliente {
                         System.out.println("Por favor ingrese el telefono nuevo");
                         String nuevoTelefono = scanner.nextLine();
                         clienteController.upDate(new Cliente(cuitClienteEditar, nuevoNombre, nuevoApellido, nuevaDireccion, nuevoTelefono));
+                        System.out.println("Ha sido editado exitosamente");
+                        System.out.println("================================================================");
                     } else {
                         System.out.println("El cuit ingresado es inexistente");
+                        System.out.println("================================================================");
                     }
 
                     break;
@@ -89,11 +97,10 @@ public class MenuCliente {
                     String cuitClienteEliminado = scanner.nextLine();
                     Cliente clienteEliminado = clienteController.findOne(cuitClienteEliminado);
                     clienteController.delete(clienteEliminado.getCuit());
-
-
+                    System.out.println("Ha sido eliminado exitosamente");
+                    System.out.println("================================================================");
                     break;
                 case "7":
-                    System.out.println("Ha salido exitosamente");
                     MenuPrincipal menuPrincipal = new MenuPrincipal();
                     menuPrincipal.mostrarMenuPrincipal();
                     break;

@@ -14,7 +14,7 @@ public class  ClienteService implements CRUD<Cliente> {
         this.clienteRepository = clienteRepository;
     }
     public void save(Cliente cliente){
-        if (findOne(cliente.getCuit())!=null) {
+        if (findOne(cliente.getCuit()) ==null) {
             clienteRepository.save(cliente);
         }
     }

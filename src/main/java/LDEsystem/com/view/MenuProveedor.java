@@ -41,19 +41,24 @@ public class MenuProveedor {
                         System.out.println("Inrese el numero de email del proveedor: ");
                         String email = leer.nextLine();
                         proveedorController.save(new Proveedor(cuit, nombre, direc, tel, email));
+                        System.out.println("Ha sido creado exitosamente");
+                        System.out.println("================================================================");
                     }else{
                         System.out.println("El proveedor ya existe");
+                        System.out.println("================================================================");
                     }
                     break;
 
                 case 2:
                     System.out.println("============== La lista de Proveedores actuales es: ===============");
                     proveedorController.findAll();
+                    System.out.println("================================================================");
                     break;
 
                 case 3:
                     System.out.println("=============== La lista de Proveedores Invalidos es: ============");
                     proveedorController.findAllOff();
+                    System.out.println("================================================================");
                     break;
 
                 case 4: System.out.println("Ingrese el C.U.I.T del proveedor a editar: ");
@@ -68,21 +73,31 @@ public class MenuProveedor {
                         System.out.println("Inrese el numero de email del proveedor: ");
                         String emailP = leer.nextLine();
                         proveedorController.upDate(new Proveedor(cuitPr, nombr, dire, telP, emailP));
+                        System.out.println("Ha sido editado exitosamente");
+                        System.out.println("================================================================");
                     }else {
                         System.out.println("El proveedor ingresado no existe");
+                        System.out.println("================================================================");
                     }
                     break;
 
                 case 5:
                     System.out.println("Ingrese el C.U.I.T. del proveedor a Buscar: ");
-                    String cuitP = leer.nextLine();
-                    proveedorController.findOne(cuitP);
+                    String cuitProv = leer.nextLine();
+                    if (proveedorController.findOne(cuitProv) != null) {
+                        System.out.println(proveedorController.findOne(cuitProv).toString());
+                    } else {
+                        System.out.println("No existe un proveedor con ese cuit");
+                        System.out.println("================================================================");
+                    }
                     break;
 
                 case 6:
                     System.out.println("Ingrese el C.U.I.T. del proveedor a eliminar: ");
                     String cuitd = leer.nextLine();
                     proveedorController.delete(cuitd);
+                    System.out.println("Ha sido eliminado exitosamente");
+                    System.out.println("================================================================");
                     break;
 
                 case 7:

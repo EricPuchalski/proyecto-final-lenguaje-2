@@ -105,20 +105,29 @@ public class MenuProducto {
                     }
 
                     productoController.save(new Producto(codigo, nombre, anchoProducto, alturaProducto, largoProducto, peso, categoriaProducto, proveedorDelProducto));
+                    System.out.println("Ha sido creado exitosamente");
+                    System.out.println("================================================================");
                     break;
                 case "2":
                     System.out.println("============== La lista de Productos actuales es: ===============");
                     productoController.findAll();
+                    System.out.println("================================================================");
                     break;
                 case "3":
                     System.out.println("============== La lista de Productos eliminados es: ===============");
                     productoController.findAllOff();
+                    System.out.println("================================================================");
                     break;
                 case "4":
                     System.out.println("Por favor ingrese el codigo del producto");
                     String codigoProducto = scanner.nextLine();
-                    if (productoController.findOne(codigoProducto) != null)
+                    if (productoController.findOne(codigoProducto) != null) {
                         System.out.println("El producto es: " + productoController.findOne(codigoProducto));
+                        System.out.println("================================================================");
+                    }else{
+                        System.out.println("El codigo ingresado es inexistente");
+                        System.out.println("================================================================");
+                    }
                     break;
                 case "5":
                     System.out.println("Por favor ingrese el coodigo del producto a editar: ");
@@ -175,10 +184,12 @@ public class MenuProducto {
                         Proveedor proveedorNuevo = proveedorController.findOne(cuitNuevoProveedor);
 
                         productoController.upDate(new Producto(codigoProductoEditado, nuevoNombre, nuevoAncho, nuevaAltura, nuevoLargo, nuevoPeso, nuevaCategoria, proveedorNuevo));
-
+                        System.out.println("Ha sido editado exitosamente");
+                        System.out.println("================================================================");
 
                     } else {
                         System.out.println("El codigo ingresado es incorrecto");
+                        System.out.println("================================================================");
                     }
                     break;
                 case "6":
@@ -186,13 +197,15 @@ public class MenuProducto {
                     String codigoProductoEliminado = scanner.nextLine();
                     if (productoController.findOne(codigoProductoEliminado) != null) {
                         productoController.delete(codigoProductoEliminado);
+                        System.out.println("Ha sido eliminado exitosamente");
+                        System.out.println("================================================================");
                     } else {
                         System.out.println("El codigo ingresado es incorrecto");
+                        System.out.println("================================================================");
                     }
 
                     break;
                 case "7":
-                    System.out.println("Ha salido exitosamente");
                     MenuPrincipal menuPrincipal = new MenuPrincipal();
                     menuPrincipal.mostrarMenuPrincipal();
                     break;

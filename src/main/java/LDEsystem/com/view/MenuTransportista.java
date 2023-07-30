@@ -67,24 +67,32 @@ public class MenuTransportista {
                                 System.out.println("No existe ese tipo de transportista");
                         }
                         transportistaController.save(new Transportista(cuit, nombre, telefono, email, tipoTransportista));
+                        System.out.println("Ha sido creado exitosamente");
+                        System.out.println("================================================================");
                     } else {
                         System.out.println("El transportista ya existe");
+                        System.out.println("================================================================");
                     }
 
                     break;
                 case "2":
                     System.out.println("============== La lista actual de Transportistas es: ===============");
                     transportistaController.findAll();
+                    System.out.println("================================================================");
                     break;
                 case "3":
                     System.out.println("============== La lista de Transportistas eliminados es: ===============");
                     transportistaController.findAllOff();
+                    System.out.println("================================================================");
                     break;
                 case "4":
                     System.out.println("Por favor ingrese el CUIT del transportista");
-                    String cuitTransportista = scanner.nextLine();
-                    transportistaController.findOne(cuitTransportista);
-
+                    String cuitTrans = scanner.nextLine();
+                    if (transportistaController.findOne(cuitTrans) != null) {
+                        System.out.println(transportistaController.findOne(cuitTrans).toString());
+                    } else {
+                        System.out.println("No existe un cliente con ese cuit");
+                    }
                     break;
                 case "5":
                     System.out.println("Por favor ingrese el CUIT del transportista");
@@ -116,8 +124,11 @@ public class MenuTransportista {
 
                         }
                         transportistaController.upDate(new Transportista(cuitTransportistaEditar, nuevoNombre, nuevoTelefono, nuevoEmail, transportistaController.findOne(cuitTransportistaEditar).getTipo()));
+                        System.out.println("Ha sido editado exitosamente");
+                        System.out.println("================================================================");
                     } else {
                         System.out.println("No se encontró un transportista con el CUIT ingresado");
+                        System.out.println("================================================================");
                     }
 
                     break;
@@ -126,8 +137,11 @@ public class MenuTransportista {
                     String cuitTransportistaEliminado = scanner.nextLine();
                     if (transportistaController.findOne(cuitTransportistaEliminado) != null) {
                         transportistaController.delete(cuitTransportistaEliminado);
+                        System.out.println("Ha sido eliminado exitosamente");
+                        System.out.println("================================================================");
                     } else {
                         System.out.println("El transportista ingresado no existe");
+                        System.out.println("================================================================");
                     }
                     break;
                 case "7":
@@ -150,6 +164,7 @@ public class MenuTransportista {
                     }
                 case "8":
                     System.out.println("Ha salido exitosamente");
+                    System.out.println("================================================================");
                     MenuPrincipal menuPrincipal = new MenuPrincipal();
                     menuPrincipal.mostrarMenuPrincipal();
                     break;
