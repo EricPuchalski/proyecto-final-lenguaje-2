@@ -34,7 +34,7 @@ public class MenuProducto {
         System.out.println("----------------------------");
         this.opcion = scanner.nextLine();
         boolean salir = false;
-        while (!salir) {
+
             switch (opcion) {
                 case "1":
                     String nombre = null;
@@ -192,8 +192,9 @@ public class MenuProducto {
 
                     break;
                 case "7":
-                    salir = true;
                     System.out.println("Ha salido exitosamente");
+                    MenuPrincipal menuPrincipal = new MenuPrincipal();
+                    menuPrincipal.mostrarMenuPrincipal();
                     break;
                 default:
                     System.out.println("Opción inválida");
@@ -202,5 +203,5 @@ public class MenuProducto {
 
 
         }
-    }
+
 }

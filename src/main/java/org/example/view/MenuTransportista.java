@@ -35,7 +35,7 @@ public class MenuTransportista {
         String opcion = scanner.nextLine();
         boolean salir = false;
 
-        while (!salir) {
+
             switch (opcion) {
                 case "1":
                     System.out.println("Por favor ingrese el CUIT");
@@ -149,8 +149,9 @@ public class MenuTransportista {
                         System.out.println("Ocurrió un error, vuelva a intentarlo nuevamente");
                     }
                 case "8":
-                    salir = true;
-                    System.out.println("ha salido exitosamente");
+                    System.out.println("Ha salido exitosamente");
+                    MenuPrincipal menuPrincipal = new MenuPrincipal();
+                    menuPrincipal.mostrarMenuPrincipal();
                     break;
 
                 default:
@@ -158,6 +159,6 @@ public class MenuTransportista {
                     break;
             }
 
-        }
+
     }
 }

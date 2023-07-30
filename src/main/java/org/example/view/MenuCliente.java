@@ -28,7 +28,7 @@ public class MenuCliente {
         System.out.println("7. Salir del Menu de cliente");
         System.out.println("----------------------------");
         this.opcion = scanner.nextLine();
-        while (!salir) {
+
             switch (opcion) {
                 case "1":
                     System.out.println("Por favor ingrese el CUIT");
@@ -94,13 +94,13 @@ public class MenuCliente {
 
                     break;
                 case "7":
-                    salir = true;
                     System.out.println("Ha salido exitosamente");
+                    MenuPrincipal menuPrincipal = new MenuPrincipal();
+                    menuPrincipal.mostrarMenuPrincipal();
                     break;
                 default:
                     System.out.println("Opción inválida");
                     break;
-            }
 
         }
     }

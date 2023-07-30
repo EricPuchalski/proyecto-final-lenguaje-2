@@ -28,7 +28,7 @@ public class MenuDeposito {
         System.out.println("7. Salir del Menú de depósito");
         System.out.println("----------------------------");
         this.opcion = scanner.nextLine();
-        while (!salir) {
+
             switch (opcion) {
                 case "1":
                     System.out.println("Por favor ingrese el código del depósito");
@@ -100,13 +100,14 @@ public class MenuDeposito {
                     depositoController.delete(depositoEliminar.getCodigo());
                     break;
                 case "7":
-                    salir = true;
                     System.out.println("Ha salido exitosamente");
+                    MenuPrincipal menuPrincipal = new MenuPrincipal();
+                    menuPrincipal.mostrarMenuPrincipal();
                     break;
                 default:
                     System.out.println("Opción inválida");
                     break;
             }
-        }
+
     }
 }

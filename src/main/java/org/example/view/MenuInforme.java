@@ -67,8 +67,10 @@ public class MenuInforme {
                 }
                 break;
             case"5":
+                System.out.println("Ha salido exitosamente");
+                MenuPrincipal menuPrincipal = new MenuPrincipal();
+                menuPrincipal.mostrarMenuPrincipal();
                 break;
-
             default:
                 System.out.println("Opción inválida. Por favor, ingrese una opción válida del menú.");
                 break;
