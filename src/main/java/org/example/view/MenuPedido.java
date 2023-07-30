@@ -200,6 +200,7 @@ public class MenuPedido {
                         System.out.println(" Por favor ingrese el numero del pedido para enviarlo a entrega ");
                         String numeroPedidoEnviarAEntrega = scanner.nextLine();
                         System.out.println("Por favor ingrese el CUIT del empleado receptor:");
+                        empleadoController.findAll();
                         String cuitEmpleadoReceptor = scanner.nextLine();
                         Pedido pedidoEnviarAEntrega = pedidoController.buscarPedidoPorNumero(numeroPedidoEnviarAEntrega);
 
