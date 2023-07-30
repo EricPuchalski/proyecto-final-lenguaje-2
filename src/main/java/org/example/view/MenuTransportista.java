@@ -2,10 +2,7 @@ package org.example.view;
 
 import org.example.controller.PedidoController;
 import org.example.controller.TransportistaController;
-import org.example.model.Cliente;
-import org.example.model.Pedido;
-import org.example.model.TipoTransportista;
-import org.example.model.Transportista;
+import org.example.model.*;
 
 import java.util.Scanner;
 
@@ -79,9 +76,17 @@ public class MenuTransportista {
                     }
                     break;
                 case "3":
+                    for (Transportista tr: transportistaController.findAll()
+                    ) {System.out.println(tr.toString());}
                     System.out.println("Por favor ingrese el CUIT del transportista");
                     String cuitTransportista = scanner.nextLine();
-                    transportistaController.findOne(cuitTransportista);
+
+                    Transportista tr = transportistaController.findOne(cuitTransportista);
+                    if (tr!=null){
+                        System.out.println("El transportista buscado es: "+tr.toString());
+                    } else {
+                        System.out.println("El cuit ingresado no corresponde a ningún transportista");
+                    }
 
                     break;
                 case "4":

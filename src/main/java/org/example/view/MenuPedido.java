@@ -64,13 +64,21 @@ public class MenuPedido {
                         String numeroPedido = scanner.nextLine();
 
                         System.out.println("Por favor seleccione el cliente del pedido");
-                        clienteController.findAll();
+                        for (Cliente cl:clienteController.findAll()
+                             ) {
+                            System.out.println(cl.toString());
+                        }
+
                         String cuitCliente = scanner.next();
                         Cliente cliente = clienteController.findOne(cuitCliente);
 
                         System.out.println("Por favor seleccione el deposito de origen");
                         System.out.println("----------------------------");
-                        depositoController.findAll();
+                        for (Deposito dp:  depositoController.findAll()
+                             ) {
+                            System.out.println(dp.toString());
+                        }
+
                         System.out.println("----------------------------");
                         scanner.nextLine();
                         String codigoDeposito = scanner.nextLine();
@@ -78,13 +86,19 @@ public class MenuPedido {
 
                         System.out.println("Por favor seleccione el deposito de destino");
                         System.out.println("----------------------------");
-                        depositoController.findAll();
+                        for (Deposito dp:  depositoController.findAll()
+                        ) {
+                            System.out.println(dp.toString());
+                        }
                         System.out.println("----------------------------");
                         String codigoDepositoDestino = scanner.nextLine();
                         Deposito depositoDestino = depositoController.findOne(codigoDepositoDestino);
 
                         System.out.println("Por favor seleccione el transportista");
-                        transportistaController.findAll();
+                        for (Transportista tr:  transportistaController.findAll()
+                        ) {
+                            System.out.println(tr.toString());
+                        }
                         String cuitTransportista = scanner.nextLine();
 
                         Transportista transportista = transportistaController.findOne(cuitTransportista);
@@ -95,10 +109,12 @@ public class MenuPedido {
                             Pedido pedido = new Pedido(numeroPedido, cliente, depositoOrigen, depositoDestino, transportista, estadoPedido, seguimiento);
                             pedido.setInicioPedido(LocalDate.now());
 
-
                             do {
                                 System.out.println("Por favor ingrese el producto");
-                                productoController.findAll();
+                                for (Producto pr: productoController.findAll()
+                                     ) {
+                                    System.out.println(pr.toString());
+                                }
                                 String codigoProducto = scanner.nextLine();
                                 System.out.println("Por favor ingrese la cantidad");
                                 int cantidadProducto = scanner.nextInt();
@@ -207,7 +223,10 @@ public class MenuPedido {
                         System.out.println(" Por favor ingrese el numero del pedido para enviarlo a entrega ");
                         String numeroPedidoEnviarAEntrega = scanner.nextLine();
                         System.out.println("Por favor ingrese el CUIT del empleado receptor:");
-                        empleadoController.findAll();
+                        for (Empleado ep: empleadoController.findAll()
+                             ) {
+                            System.out.println(ep.toString());
+                        }
                         String cuitEmpleadoReceptor = scanner.nextLine();
                         Pedido pedidoEnviarAEntrega = pedidoController.buscarPedidoPorNumero(numeroPedidoEnviarAEntrega);
 

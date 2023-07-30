@@ -40,17 +40,7 @@ public class InformeRepository {
         }
         return contador;
     }
-   /* public void obtenerHistorialDeUnCliente(String cuit){
-        Cliente clienteBuscado = clienteRepository.buscarClientePorCuit(cuit);
-        if(clienteBuscado!=null){
-            for (Pedido pedido: pedidoRepository.obtenerTodosLosPedidos()
-            ) {
-                for (LineaPedido lineaPedido: pedido.getLineasPedidos()
-                ) {
-                    if (pedido.getCliente().getCuit().equals(clienteBuscado.getCuit())){
-                        System.out.println(linea
 
-    */
    public int obtenerHistorialDeUnCliente(String cuit){
        Cliente clienteBuscado = clienteRepository.findOne(cuit);
        int contador = 0;

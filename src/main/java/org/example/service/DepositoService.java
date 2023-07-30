@@ -46,18 +46,5 @@ public class DepositoService implements CRUD<Deposito>{
             depositoRepository.delete(codigo);
         }
     }
-    public List<Sector> buscarSectoresDeUnDepositoPorCodigo(String codigo){
-        List<Sector> sectoresDelDeposito = depositoRepository.buscarSectoresDeUnDepositoPorCodigo(codigo);
-        if (!sectoresDelDeposito.isEmpty()){
-            for (Sector sector: sectoresDelDeposito
-            ) {
-                System.out.println("Sectores del deposito: "+ sector.getDescripcion());
-            }
-        } else{
-            System.out.println("EL deposito no tiene sectores");
-        }
-        return sectoresDelDeposito;
-    }
-
 
 }

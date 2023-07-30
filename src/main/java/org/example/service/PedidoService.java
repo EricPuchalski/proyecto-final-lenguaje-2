@@ -28,14 +28,7 @@ public class PedidoService {
     }
 
     public void crearPedido(Pedido pedido) {
-        if (pedidoRepository.buscarPedidoPorNumero(pedido.getNumeroPedido()) != null) {
-            System.out.println("El Pedido con el número ingresado ya existe");
-        } else if (pedido.getCliente() == null) {
-            System.out.println("El cliente no está asignado al pedido. Asigne un cliente válido.");
-        } else {
-            System.out.println("El pedido se creó correctamente");
             pedidoRepository.crearPedido(pedido);
-        }
     }
 
     public List<Pedido> obtenerTodosLosPedidos() {
@@ -43,7 +36,6 @@ public class PedidoService {
         for (Pedido pedido: pedidoRepository.obtenerTodosLosPedidos()
              ) {
             pedidosEncontrados.add(pedido);
-            System.out.println(pedido.toString());
         }
         return pedidosEncontrados;
     }
