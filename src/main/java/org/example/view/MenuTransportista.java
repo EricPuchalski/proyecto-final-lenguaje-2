@@ -19,7 +19,9 @@ public class MenuTransportista {
 
     public void mostrarMenuTransportista() {
         Scanner scanner = new Scanner(System.in);
+        System.out.println(" ");
         System.out.println("Por favor ingrese la opción que desee: ");
+        System.out.println(" ");
         System.out.println("1. Crear transportista");
         System.out.println("2. Ver transportistas");
         System.out.println("3. Buscar transportista por CUIT");
@@ -118,6 +120,7 @@ public class MenuTransportista {
                                 System.out.println("No existe ese tipo de transportista");
 
                         }
+                        System.out.println("Transportista editado correctamente");
                         transportistaController.upDate(new Transportista(cuitTransportistaEditar, nuevoNombre, nuevoTelefono, nuevoEmail, transportistaController.findOne(cuitTransportistaEditar).getTipo()));
                     } else {
                         System.out.println("No se encontró un transportista con el CUIT ingresado");

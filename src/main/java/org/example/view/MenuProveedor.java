@@ -67,6 +67,7 @@ public class MenuProveedor {
                         System.out.println("Inrese el numero de email del proveedor: ");
                         String emailP = leer.nextLine();
                         proveedorController.upDate(new Proveedor(cuitPr, nombr, dire, telP, emailP));
+                        System.out.println("Proveedor editado correctamente");
                     }else {
                         System.out.println("El proveedor ingresado no existe");
                     }

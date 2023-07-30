@@ -186,7 +186,7 @@ public class MenuProducto {
                         Proveedor proveedorNuevo = proveedorController.findOne(cuitNuevoProveedor);
 
                         productoController.upDate(new Producto(codigoProductoEditado, nuevoNombre, nuevoAncho, nuevaAltura, nuevoLargo, nuevoPeso, nuevaCategoria, proveedorNuevo));
-
+                        System.out.println("Producto editado correctamente");
 
                     } else {
                         System.out.println("El codigo ingresado es incorrecto");

@@ -85,7 +85,7 @@ public class MenuDeposito {
                         Double nlat = scanner.nextDouble();
                         System.out.println("Por favor ingrese la nueva longitud del depósito");
                         Double nlon = scanner.nextDouble();
-
+                        System.out.println("Deposito editado correctamente");
                         depositoController.upDate(new Deposito(codigoDepositoEditar, nuevoNombre, nuevaDireccion, nuevoTelefono, nuevoEmail, nuevoContinente, new Posicion(nlat, nlon)));
                     } else {
                         System.out.println("El código del depósito ingresado es inexistente");
@@ -95,7 +95,14 @@ public class MenuDeposito {
                     System.out.println("Por favor ingrese el código del depósito a eliminar");
                     String codigoDepositoEliminar = scanner.nextLine();
                     Deposito depositoEliminar = depositoController.findOne(codigoDepositoEliminar);
-                    depositoController.delete(depositoEliminar.getCodigo());
+                    if (depositoEliminar!=null){
+                        depositoController.delete(depositoEliminar.getCodigo());
+                        System.out.println("Deposito eliminado correctamente");
+                    } else {
+                        System.out.println("No se encontró ningun deposito con el codigo ingresado");
+                    }
+
+
                     break;
                 case "6":
                     System.out.println("Ha salido exitosamente");
