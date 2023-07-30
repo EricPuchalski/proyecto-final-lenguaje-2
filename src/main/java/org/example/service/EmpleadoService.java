@@ -14,16 +14,7 @@ public class EmpleadoService implements CRUD<Empleado>{
     public EmpleadoService(EmpleadoRepository empleadoRepository) {
         this.empleadoRepository = new EmpleadoRepository();
     }
-
-    public List<Empleado> mostrarEmpleados(){
-        List listaEmpleados = new ArrayList<>();
-        for (Empleado empleado: empleadoRepository.findAll()
-             ) {
-            System.out.println(empleado.toString());
-            listaEmpleados.add(empleado);
-        }
-        return listaEmpleados;
-    }
+    
 
     @Override
     public void save(Empleado empleado) {
