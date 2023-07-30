@@ -34,10 +34,10 @@ public class MenuPedido {
         this.clienteController = new ClienteController(new ClienteService(new ClienteRepository()));
         this.empleadoController = new EmpleadoController(new EmpleadoService(new EmpleadoRepository()));
     }
-
+    boolean salir = false;
     public void mostrarMenuPedido() {
         int seguirAgregandoProductos;
-        boolean salir = false;
+
         Scanner scanner = new Scanner(System.in);
 
 
@@ -90,14 +90,13 @@ public class MenuPedido {
                     Transportista transportista = transportistaController.findOne(cuitTransportista);
 
 
-
                     String estadoPedido = depositoOrigen.getSectores().get(0).getDescripcion();
 
 
                     if ((transportista != null && cliente != null && depositoOrigen != null && depositoDestino != null)) {
 
                         Seguimiento seguimiento = new Seguimiento(LocalDate.of(2023, 10, 20), depositoOrigen.getPosicion().getLatitud(), depositoOrigen.getPosicion().getLongitud());
-                        Pedido pedido = new Pedido(numeroPedido,cliente,depositoOrigen,depositoDestino,transportista,estadoPedido, seguimiento);
+                        Pedido pedido = new Pedido(numeroPedido, cliente, depositoOrigen, depositoDestino, transportista, estadoPedido, seguimiento);
                         pedido.setInicioPedido(LocalDate.now());
 
 
@@ -109,7 +108,7 @@ public class MenuPedido {
                             int cantidadProducto = scanner.nextInt();
                             scanner.nextLine();
                             LineaPedido lineaPedido = new LineaPedido(productoController.findOne(codigoProducto), cantidadProducto);
-                            if (lineaPedido.getProducto()!=null){
+                            if (lineaPedido.getProducto() != null) {
                                 pedido.getLineasPedidos().add(lineaPedido);
                             }
                             System.out.println("----------------------------");
@@ -120,7 +119,7 @@ public class MenuPedido {
                             seguirAgregandoProductos = scanner.nextInt();
                             scanner.nextLine();
                         } while (seguirAgregandoProductos == 1);
-                        if (pedido.getLineasPedidos().isEmpty()){
+                        if (pedido.getLineasPedidos().isEmpty()) {
                             System.out.println("Error, vuelva a intentarlo nuevamente");
                             break;
                         }
@@ -142,7 +141,7 @@ public class MenuPedido {
                     Pedido pedidoEncontrado = pedidoController.buscarPedidoPorNumero(nroPedido);
 
 
-                    if ((pedidoEncontrado!=null && empleadoController.findOne(cuitEmpleado)!=null) && pedidoEncontrado.getEstadoPedido().equals("Pendiente")){
+                    if ((pedidoEncontrado != null && empleadoController.findOne(cuitEmpleado) != null) && pedidoEncontrado.getEstadoPedido().equals("Pendiente")) {
 
                         pedidoController.procesarPedido(nroPedido, cuitEmpleado);
                         System.out.println("El pedido fue procesado");
@@ -155,7 +154,7 @@ public class MenuPedido {
                     System.out.println("Por favor ingrese el numero del pedido para completarlo");
                     String nroPedidoCompletar = scanner.nextLine();
                     Pedido pedidoCompletarPedido = pedidoController.buscarPedidoPorNumero(nroPedidoCompletar);
-                    if ((pedidoCompletarPedido!=null) && pedidoCompletarPedido.getEstadoPedido().equals("En Proceso")){
+                    if ((pedidoCompletarPedido != null) && pedidoCompletarPedido.getEstadoPedido().equals("En Proceso")) {
                         pedidoController.completarPedido(nroPedidoCompletar);
                         System.out.println("El pedido fue completado");
                     } else {
@@ -166,7 +165,7 @@ public class MenuPedido {
                     System.out.println("Por favor ingrese el numero del pedido para enviarlo a despacho");
                     String nroPedidoEnviarADespacho = scanner.nextLine();
                     Pedido pedidoEnviarADespacho = pedidoController.buscarPedidoPorNumero(nroPedidoEnviarADespacho);
-                    if ((pedidoEnviarADespacho!=null) && pedidoEnviarADespacho.getEstadoPedido().equals("Completo")){
+                    if ((pedidoEnviarADespacho != null) && pedidoEnviarADespacho.getEstadoPedido().equals("Completo")) {
                         pedidoController.enviarADespacho(nroPedidoEnviarADespacho);
                         System.out.println("El pedido fue enviado a despacho");
                     } else {
@@ -177,7 +176,7 @@ public class MenuPedido {
                     System.out.println("Por favor ingrese el número del pedido para despacharlo");
                     String nroPedidoDespacho = scanner.nextLine();
                     Pedido pedidoDespacho = pedidoController.buscarPedidoPorNumero(nroPedidoDespacho);
-                    if ((pedidoDespacho != null )&& pedidoDespacho.getEstadoPedido().equals("Esperando Despacho")) {
+                    if ((pedidoDespacho != null) && pedidoDespacho.getEstadoPedido().equals("Esperando Despacho")) {
                         pedidoController.despacharPedido(nroPedidoDespacho);
                         System.out.println("El pedido fue despachado");
                     } else {
@@ -188,7 +187,7 @@ public class MenuPedido {
                     System.out.println("Por favor ingrese el número del pedido para enviarlo a transito");
                     String nroPedidoTransito = scanner.nextLine();
                     Pedido pedidoTransito = pedidoController.buscarPedidoPorNumero(nroPedidoTransito);
-                    if ((pedidoTransito != null) && pedidoTransito.getEstadoPedido().equals("Despacho")){
+                    if ((pedidoTransito != null) && pedidoTransito.getEstadoPedido().equals("Despacho")) {
                         pedidoController.transitarPedido(nroPedidoTransito);
                         System.out.println("El pedido fue enviado a transito");
                     } else {
@@ -203,7 +202,7 @@ public class MenuPedido {
                     String cuitEmpleadoReceptor = scanner.nextLine();
                     Pedido pedidoEnviarAEntrega = pedidoController.buscarPedidoPorNumero(numeroPedidoEnviarAEntrega);
 
-                    if ((pedidoEnviarAEntrega != null && empleadoController.findOne(cuitEmpleadoReceptor)!=null) && pedidoEnviarAEntrega.getEstadoPedido().equals("En transito")){
+                    if ((pedidoEnviarAEntrega != null && empleadoController.findOne(cuitEmpleadoReceptor) != null) && pedidoEnviarAEntrega.getEstadoPedido().equals("En transito")) {
 
                         pedidoController.enviarAEntrega(numeroPedidoEnviarAEntrega, cuitEmpleadoReceptor);
                         System.out.println("El pedido fue enviado a entrega");
@@ -216,7 +215,7 @@ public class MenuPedido {
                     System.out.println("Por favor ingrese el número del pedido para entregarlo");
                     String nroPedidoEntregar = scanner.nextLine();
                     Pedido pedidoEntregar = pedidoController.buscarPedidoPorNumero(nroPedidoEntregar);
-                    if ((pedidoEntregar != null) && pedidoEntregar.getEstadoPedido().equals("Esperando Entrega")){
+                    if ((pedidoEntregar != null) && pedidoEntregar.getEstadoPedido().equals("Esperando Entrega")) {
                         List<LineaPedido> lineasPedido = pedidoEntregar.getLineasPedidos();
                         List<Integer> calificacionesProveedor = new ArrayList<>();
 
@@ -239,13 +238,13 @@ public class MenuPedido {
                     System.out.println("Por favor ingrese el número del pedido para calcular la distancia");
                     String nroPedidoDistancia = scanner.nextLine();
                     Pedido pedidoDistancia = pedidoController.buscarPedidoPorNumero(nroPedidoDistancia);
-                    if (pedidoDistancia!=null){
+                    if (pedidoDistancia != null) {
 
                         System.out.println("El pedido se encuentra a "
-                                +Math.round(calcularDistancia.calcularDistancia(pedidoDistancia.getSeguimiento().getLatitud()
-                                ,pedidoDistancia.getSeguimiento().getLongitud()
-                                ,pedidoDistancia.getDepositoDestino().getPosicion().getLatitud()
-                                ,pedidoDistancia.getDepositoDestino().getPosicion().getLongitud())) + " kms de la sucursal destino");
+                                + Math.round(calcularDistancia.calcularDistancia(pedidoDistancia.getSeguimiento().getLatitud()
+                                , pedidoDistancia.getSeguimiento().getLongitud()
+                                , pedidoDistancia.getDepositoDestino().getPosicion().getLatitud()
+                                , pedidoDistancia.getDepositoDestino().getPosicion().getLongitud())) + " kms de la sucursal destino");
                     } else {
                         System.out.println("El pedido no se encontró, intentelo nuevamente");
                     }
@@ -260,8 +259,8 @@ public class MenuPedido {
                     break;
 
 
-
             }
+            
         }
 
 
