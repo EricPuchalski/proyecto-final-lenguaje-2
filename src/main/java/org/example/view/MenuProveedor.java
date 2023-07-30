@@ -1,6 +1,7 @@
 package org.example.view;
 
 import org.example.controller.ProveedorController;
+import org.example.model.Cliente;
 import org.example.model.Proveedor;
 import org.example.repository.ProveedorRepository;
 import org.example.service.ProveedorService;
@@ -49,7 +50,9 @@ public class MenuProveedor {
 
                 case 2:
                     System.out.println("============== La lista de Proveedores actuales es: ===============");
-                    proveedorController.findAll();
+                    for (Proveedor pr: proveedorController.findAll()) {
+                        System.out.println(pr.toString());
+                    }
                     break;
 
                 case 3: System.out.println("Ingrese el C.U.I.T del proveedor a editar: ");

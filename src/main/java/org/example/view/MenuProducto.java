@@ -3,6 +3,7 @@ package org.example.view;
 import org.example.controller.ProductoController;
 import org.example.controller.ProveedorController;
 import org.example.model.CategoriaProducto;
+import org.example.model.Cliente;
 import org.example.model.Producto;
 import org.example.model.Proveedor;
 import org.example.repository.ProveedorRepository;
@@ -118,7 +119,9 @@ public class MenuProducto {
                     break;
                 case "2":
                     System.out.println("============== La lista de Productos actuales es: ===============");
-                    productoController.findAll();
+                    for (Producto pr: productoController.findAll()) {
+                        System.out.println(pr.toString());
+                    }
                     break;
 
                 case "3":

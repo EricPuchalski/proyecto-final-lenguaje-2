@@ -45,12 +45,7 @@ public class TransportistaService implements CRUD<Transportista>{
 
     @Override
     public List<Transportista> findAll() {
-        List<Transportista>transportistaList = new ArrayList<>();
-        for(Transportista tr : transportistaRepository.findAll()){
-            System.out.println(tr.toString());
-        }
-
-        return transportistaList;
+        return transportistaRepository.findAll();
     }
 
 

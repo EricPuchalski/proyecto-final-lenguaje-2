@@ -2,6 +2,7 @@ package org.example.view;
 
 import org.example.controller.PedidoController;
 import org.example.controller.TransportistaController;
+import org.example.model.Cliente;
 import org.example.model.Pedido;
 import org.example.model.TipoTransportista;
 import org.example.model.Transportista;
@@ -73,7 +74,9 @@ public class MenuTransportista {
                     break;
                 case "2":
                     System.out.println("============== La lista actual de Transportistas es: ===============");
-                    transportistaController.findAll();
+                    for (Transportista tr: transportistaController.findAll()) {
+                        System.out.println(tr.toString());
+                    }
                     break;
                 case "3":
                     System.out.println("Por favor ingrese el CUIT del transportista");
