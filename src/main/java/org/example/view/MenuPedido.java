@@ -6,6 +6,7 @@ import org.example.repository.*;
 import org.example.service.*;
 import org.example.util.CalcularDistancia;
 
+import java.sql.SQLOutput;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -116,8 +117,14 @@ public class MenuPedido {
                                     System.out.println(pr.toString());
                                 }
                                 String codigoProducto = scanner.nextLine();
-                                System.out.println("Por favor ingrese la cantidad");
-                                int cantidadProducto = scanner.nextInt();
+                                int cantidadProducto = 0 ;
+                                try{
+                                    System.out.println("Por favor ingrese la cantidad");
+                                    cantidadProducto = scanner.nextInt();
+                                } catch(Exception e){
+                                    System.out.println("Se produjo un error con la cantidad introducida");
+                                }
+
                                 scanner.nextLine();
                                 LineaPedido lineaPedido = new LineaPedido(productoController.findOne(codigoProducto), cantidadProducto);
                                 if (lineaPedido.getProducto() != null) {
@@ -250,8 +257,14 @@ public class MenuPedido {
                             List<Integer> calificacionesProveedor = new ArrayList<>();
 
                             for (LineaPedido lineaPedido : lineasPedido) {
-                                System.out.println("Por favor ingrese la calificación del proveedor del producto " + lineaPedido.getProducto().getNombre() + " :");
-                                int calificacion = scanner.nextInt();
+                                int calificacion = 0;
+                                try{
+                                    System.out.println("Por favor ingrese la calificación del proveedor del producto " + lineaPedido.getProducto().getNombre() + " :");
+                                    calificacion = scanner.nextInt();
+                                } catch (Exception e){
+                                    System.out.println("Se produjo un error en la calificación");
+                                    break;
+                                }
                                 scanner.nextLine(); // Consumir el salto de línea
                                 calificacionesProveedor.add(calificacion);
                             }
