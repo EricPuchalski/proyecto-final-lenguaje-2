@@ -22,12 +22,12 @@ public class SectorRepository implements CRUD<Sector>{
     @Override
     public void upLoad() {
         sectores.add(new Sector("1", "Pendiente"));
-        sectores.add(new Sector("2", "En Proceso "));
-        sectores.add(new Sector("3", "Completo "));
-        sectores.add(new Sector("4", "Esperando Despacho "));
-        sectores.add(new Sector("5", "Despacho "));
-        sectores.add(new Sector("6", "Esperando Entrega "));
-        sectores.add(new Sector("7", "Entrega "));
+        sectores.add(new Sector("2", "En Proceso"));
+        sectores.add(new Sector("3", "Completo"));
+        sectores.add(new Sector("4", "Esperando Despacho"));
+        sectores.add(new Sector("5", "Despacho"));
+        sectores.add(new Sector("6", "Esperando Entrega"));
+        sectores.add(new Sector("7", "Entrega"));
     }
 
     @Override
