@@ -54,16 +54,6 @@ public class SectorRepository implements CRUD<Sector>{
         return sectoresHabilitados;
     }
 
-    @Override
-    public List<Sector> findAllOff() {
-        List<Sector>sectoresDeshabilitados = new ArrayList<>();
-        for(Sector sr : sectores){
-            if(sr.getEstado() == Sector.Estado.HABILITADO){
-                sectoresDeshabilitados.add(sr);
-            }
-        }
-        return sectoresDeshabilitados;
-    }
 
     @Override
     public Sector findOne(String id) {

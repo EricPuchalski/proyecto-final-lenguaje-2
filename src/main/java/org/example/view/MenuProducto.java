@@ -28,11 +28,10 @@ public class MenuProducto {
         System.out.println("----------------------------");
         System.out.println("1. Crear Producto");
         System.out.println("2. Ver Productos");
-        System.out.println("3. Ver Productos eliminados");
-        System.out.println("4. Buscar producto por código");
-        System.out.println("5. Editar producto");
-        System.out.println("6. Eliminar producto");
-        System.out.println("7. Salir del Menu de producto");
+        System.out.println("3. Buscar producto por código");
+        System.out.println("4. Editar producto");
+        System.out.println("5. Eliminar producto");
+        System.out.println("6. Salir del Menu de producto");
         System.out.println("----------------------------");
         this.opcion = scanner.nextLine();
 
@@ -121,18 +120,15 @@ public class MenuProducto {
                     System.out.println("============== La lista de Productos actuales es: ===============");
                     productoController.findAll();
                     break;
+
                 case "3":
-                    System.out.println("============== La lista de Productos eliminados es: ===============");
-                    productoController.findAllOff();
-                    break;
-                case "4":
                     System.out.println("Por favor ingrese el codigo del producto");
                     String codigoProducto = scanner.nextLine();
                     if (productoController.findOne(codigoProducto) != null)
                         System.out.println("El producto es: " + productoController.findOne(codigoProducto));
                     else System.out.println("El codigo ingresado no coincide con ningún producto");
                     break;
-                case "5":
+                case "4":
                     System.out.println("Por favor ingrese el coodigo del producto a editar: ");
                     String codigoProductoEditado = scanner.nextLine();
                     if (productoController.findOne(codigoProductoEditado) != null) {
@@ -193,7 +189,7 @@ public class MenuProducto {
                         System.out.println("El codigo ingresado es incorrecto");
                     }
                     break;
-                case "6":
+                case "5":
                     System.out.println("Por favor ingrese el codigo del producto a eliminar");
                     String codigoProductoEliminado = scanner.nextLine();
                     if (productoController.findOne(codigoProductoEliminado) != null) {
@@ -203,7 +199,7 @@ public class MenuProducto {
                     }
 
                     break;
-                case "7":
+                case "6":
                     System.out.println("Ha salido exitosamente");
                     MenuPrincipal menuPrincipal = new MenuPrincipal();
                     menuPrincipal.mostrarMenuPrincipal();

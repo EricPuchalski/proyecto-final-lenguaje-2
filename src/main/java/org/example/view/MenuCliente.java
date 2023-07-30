@@ -21,11 +21,10 @@ public class MenuCliente {
         System.out.println("----------------------------");
         System.out.println("1. Crear cliente");
         System.out.println("2. Ver clientes");
-        System.out.println("3. Ver clientes eliminados");
-        System.out.println("4. Buscar cliente por CUIT");
-        System.out.println("5. Editar cliente");
-        System.out.println("6. Eliminar cliente");
-        System.out.println("7. Salir del Menu de cliente");
+        System.out.println("3. Buscar cliente por CUIT");
+        System.out.println("4. Editar cliente");
+        System.out.println("5. Eliminar cliente");
+        System.out.println("6. Salir del Menu de cliente");
         System.out.println("----------------------------");
         this.opcion = scanner.nextLine();
 
@@ -55,9 +54,6 @@ public class MenuCliente {
                     clienteController.findAll();
                     break;
                 case "3":
-                    System.out.println("============== La lista de Proveedores eliminados es: ===============");
-                    clienteController.findAllOff();
-                case "4":
                     System.out.println("Por favor ingrese el CUIT del cliente");
                     String cuitCliente = scanner.nextLine();
                     if (clienteController.findOne(cuitCliente) != null) {
@@ -71,7 +67,7 @@ public class MenuCliente {
                     }
 
                     break;
-                case "5":
+                case "4":
                     System.out.println("Por favor ingrese el CUIT del cliente a editar");
                     String cuitClienteEditar = scanner.nextLine();
                     if (clienteController.findOne(cuitClienteEditar) != null) {
@@ -89,7 +85,7 @@ public class MenuCliente {
                     }
 
                     break;
-                case "6":
+                case "5":
                     System.out.println("Por favor ingrese el cuit del cliente a eliminar");
                     String cuitClienteEliminado = scanner.nextLine();
                     Cliente clienteEliminado = clienteController.findOne(cuitClienteEliminado);
@@ -97,7 +93,7 @@ public class MenuCliente {
 
 
                     break;
-                case "7":
+                case "6":
                     System.out.println("Ha salido exitosamente");
                     MenuPrincipal menuPrincipal = new MenuPrincipal();
                     menuPrincipal.mostrarMenuPrincipal();

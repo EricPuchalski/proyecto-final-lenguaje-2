@@ -21,21 +21,10 @@ public class  ClienteService implements CRUD<Cliente>{
 
 
     public List<Cliente>findAll(){
-        List<Cliente>clienteList = new ArrayList<>();
-        for(Cliente cr : clienteRepository.findAll()){
-            System.out.println(cr.toString());
-        }
-
-        return clienteList;
+        return clienteRepository.findAll();
     }
-    public List<Cliente>findAllOff(){
-        List<Cliente>clienteList = new ArrayList<>();
-        for(Cliente cr : clienteRepository.findAllOff()){
-            System.out.println(cr.toString());
-        }
 
-        return clienteList;
-    }
+
     public Cliente findOne(String cuit){
         Cliente cliente = null;
         if (clienteRepository.findOne(cuit)!=null) {

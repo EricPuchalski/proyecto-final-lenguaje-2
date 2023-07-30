@@ -53,15 +53,6 @@ public class TransportistaService implements CRUD<Transportista>{
         return transportistaList;
     }
 
-    @Override
-    public List<Transportista> findAllOff() {
-        List<Transportista>transportistaList = new ArrayList<>();
-        for(Transportista tr : transportistaRepository.findAllOff()){
-            System.out.println(tr.toString());
-        }
-
-        return transportistaList;
-    }
 
     @Override
     public void delete(String cuit) {

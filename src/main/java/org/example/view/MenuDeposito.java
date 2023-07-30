@@ -20,11 +20,10 @@ public class MenuDeposito {
         System.out.println("Por favor ingrese la opción que desee: ");
         System.out.println("1. Crear depósito");
         System.out.println("2. Ver depósitos");
-        System.out.println("3. Ver depósitos eliminados");
-        System.out.println("4. Buscar depósito por código");
-        System.out.println("5. Editar depósito");
-        System.out.println("6. Eliminar depósito");
-        System.out.println("7. Salir del Menú de depósito");
+        System.out.println("3. Buscar depósito por código");
+        System.out.println("4. Editar depósito");
+        System.out.println("5. Eliminar depósito");
+        System.out.println("6. Salir del Menú de depósito");
         System.out.println("----------------------------");
         this.opcion = scanner.nextLine();
 
@@ -57,9 +56,6 @@ public class MenuDeposito {
                     depositoController.findAll();
                     break;
                 case "3":
-                    depositoController.findAllOff();
-                    break;
-                case "4":
                     System.out.println("Por favor ingrese el código del depósito");
                     String codigoDeposito = scanner.nextLine();
                     if (depositoController.findOne(codigoDeposito) != null) {
@@ -68,7 +64,7 @@ public class MenuDeposito {
                         System.out.println("No existe un depósito con ese código");
                     }
                     break;
-                case "5":
+                case "4":
                     System.out.println("Por favor ingrese el código del depósito a editar");
                     String codigoDepositoEditar = scanner.nextLine();
                     if (depositoController.findOne(codigoDepositoEditar) != null) {
@@ -92,13 +88,13 @@ public class MenuDeposito {
                         System.out.println("El código del depósito ingresado es inexistente");
                     }
                     break;
-                case "6":
+                case "5":
                     System.out.println("Por favor ingrese el código del depósito a eliminar");
                     String codigoDepositoEliminar = scanner.nextLine();
                     Deposito depositoEliminar = depositoController.findOne(codigoDepositoEliminar);
                     depositoController.delete(depositoEliminar.getCodigo());
                     break;
-                case "7":
+                case "6":
                     System.out.println("Ha salido exitosamente");
                     MenuPrincipal menuPrincipal = new MenuPrincipal();
                     menuPrincipal.mostrarMenuPrincipal();

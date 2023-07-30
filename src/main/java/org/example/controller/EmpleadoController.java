@@ -27,10 +27,6 @@ public class EmpleadoController implements  CRUD<Empleado> {
         return empleadoService.findAll();
     }
 
-    @Override
-    public List<Empleado> findAllOff() {
-        return empleadoService.findAllOff();
-    }
 
     @Override
     public void upDate(Empleado empleado) {

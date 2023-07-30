@@ -104,16 +104,7 @@ public class ProductoRepository implements CRUD<Producto>{
         return productosHabilitados;
     }
 
-    @Override
-    public List<Producto> findAllOff() {
-        List<Producto>productosDeshabilitados = new ArrayList<>();
-        for (Producto pr : productos){
-            if(pr.getEstado().equals(Producto.Estado.HABILITADO)){
-                productosDeshabilitados.add(pr);
-            }
-        }
-        return productosDeshabilitados;
-    }
+
 
     @Override
     public Producto findOne(String id) {

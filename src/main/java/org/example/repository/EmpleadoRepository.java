@@ -58,16 +58,7 @@ public class EmpleadoRepository implements CRUD<Empleado>{
         return empleadosHabilitados;
     }
 
-    @Override
-    public List<Empleado> findAllOff() {
-        List<Empleado>empleadosDeshabilitados = new ArrayList<>();
-        for(Empleado er : empleados){
-            if(er.getEstado() == Empleado.Estado.DESHABILITADO){
-                empleadosDeshabilitados.add(er);
-            }
-        }
-        return empleadosDeshabilitados;
-    }
+
 
     @Override
     public Empleado findOne(String id) {
