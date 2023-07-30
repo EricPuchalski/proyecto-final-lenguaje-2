@@ -23,6 +23,7 @@ public class MenuPrincipal {
         this.menuProducto = new MenuProducto(new ProductoController(new ProductoService(new ProductoRepository())));
         this.menuPedido = new MenuPedido(new PedidoController(new PedidoService(new PedidoRepository())));
         this.menuInforme = new MenuInforme(new InformeController(new InformeService(new InformeRepository(new PedidoRepository(), new ClienteRepository(), new ProductoRepository()))), new ClienteController(new ClienteService(new ClienteRepository())), new PedidoController(new PedidoService(new PedidoRepository())));
+        this.menuProveedor = new MenuProveedor(new ProveedorController(new ProveedorService(new ProveedorRepository())));
     }
 
     public void mostrarMenuPrincipal() {
@@ -62,7 +63,6 @@ public class MenuPrincipal {
                     menuInforme.mostrarMenuInforme();
                     break;
                 case "7":
-                    salir = true;
                     System.out.println("Ha salido exitosamente");
                     break;
                 default:

@@ -16,8 +16,8 @@ public class MenuProveedor {
     public void mostrarMenuProveedor(){
         Scanner leer = new Scanner(System.in);
         Boolean salir = false;
-        ////////////////////////////////////////////////////////////////////
-        while (!salir) {
+
+
             System.out.println("=============== Menu ====================");
             System.out.println("1.Crear proveedor");
             System.out.println("2.Ver todos los proveedores");
@@ -89,15 +89,16 @@ public class MenuProveedor {
                     break;
 
                 case 7:
-                    salir = true;
                     System.out.println("Ha salido exitosamente");
+                    MenuPrincipal menuPrincipal = new MenuPrincipal();
+                    menuPrincipal.mostrarMenuPrincipal();
                     break;
 
                 default:
                     System.out.println("La opcion ingresada no existe, intente nuevamente..");
             }
 
-        }
+
 
     }
 }
