@@ -29,13 +29,6 @@ public class DepositoService implements CRUD<Deposito>{
         return depositoList;
     }
 
-    public List<Deposito> findAllOff() {
-        List<Deposito> depositoList = new ArrayList<>();
-        for (Deposito dp : depositoRepository.findAllOff()) {
-            System.out.println(dp.toString());
-        }
-        return depositoList;
-    }
 
     public Deposito findOne(String codigo) {
         Deposito deposito = null;

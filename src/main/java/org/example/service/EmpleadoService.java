@@ -56,19 +56,9 @@ public class EmpleadoService implements CRUD<Empleado>{
         for(Empleado er : empleadoRepository.findAll()){
             System.out.println(er.toString());
         }
-
         return empleadoList;
     }
 
-    @Override
-    public List<Empleado> findAllOff() {
-        List<Empleado>empleadoList = new ArrayList<>();
-        for(Empleado er : empleadoRepository.findAllOff()){
-            System.out.println(er.toString());
-        }
-
-        return empleadoList;
-    }
 
     @Override
     public void delete(String cuit) {

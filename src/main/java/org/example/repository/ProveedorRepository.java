@@ -55,16 +55,7 @@ public class ProveedorRepository implements CRUD<Proveedor>{
         return proveedoresHabilitados;
     }
 
-    @Override
-    public List<Proveedor> findAllOff() {
-        List<Proveedor>proveedoresInvalidos = new ArrayList<>();
-        for(Proveedor pr : proveedores){
-            if(pr.getEstado() == Proveedor.Estado.Invalido){
-                proveedoresInvalidos.add(pr);
-            }
-        }
-        return proveedoresInvalidos;
-    }
+
 
     @Override
     public Proveedor findOne(String cuit) {

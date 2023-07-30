@@ -30,13 +30,7 @@ public class ProductoService implements CRUD<Producto>{
         return productoList;
     }
 
-    public List<Producto> findAllOff() {
-        List<Producto> productoList = new ArrayList<>();
-        for (Producto pr : productoRepository.findAllOff()) {
-            System.out.println(pr.toString());
-        }
-        return productoList;
-    }
+
 
     public Producto findOne(String codigo) {
         Producto producto = null;

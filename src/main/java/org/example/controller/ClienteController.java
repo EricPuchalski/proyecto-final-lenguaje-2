@@ -22,10 +22,6 @@ public class ClienteController implements CRUD<Cliente>{
         return clienteService.findAll();
     }
 
-    @Override
-    public List<Cliente> findAllOff() {
-        return clienteService.findAllOff();
-    }
 
     public void delete(String cuit) {
         clienteService.delete(cuit);

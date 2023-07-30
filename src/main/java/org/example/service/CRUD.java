@@ -9,6 +9,6 @@ public interface CRUD <T>{
 
     T findOne(String cuit);
     List<T> findAll();
-    List<T>findAllOff();
+
     void delete(String cuit);
 }

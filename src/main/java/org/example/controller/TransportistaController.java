@@ -25,9 +25,6 @@ public class TransportistaController {
     public void findAll(){
         transportistaService.findAll();
     }
-    public void findAllOff(){
-        transportistaService.findAllOff();
-    }
 
     public void upDate(Transportista transportista) {
         transportistaService.upDate(transportista);

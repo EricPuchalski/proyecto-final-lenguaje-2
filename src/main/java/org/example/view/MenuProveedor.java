@@ -20,11 +20,10 @@ public class MenuProveedor {
             System.out.println("=============== Menu ====================");
             System.out.println("1.Crear proveedor");
             System.out.println("2.Ver todos los proveedores");
-            System.out.println("3.Ver todos los proveedores Inhabilitados");
-            System.out.println("4.Editar proveedor");
-            System.out.println("5.Buscar proveedor por C.U.I.T.");
-            System.out.println("6.Eliminar proveedor");
-            System.out.println("7.Salir");
+            System.out.println("3.Editar proveedor");
+            System.out.println("4.Buscar proveedor por C.U.I.T.");
+            System.out.println("5.Eliminar proveedor");
+            System.out.println("6.Salir");
             System.out.println("=========================================");
             System.out.println("Ingrese una opcion: ");
             int opcion = leer.nextInt();
@@ -53,12 +52,7 @@ public class MenuProveedor {
                     proveedorController.findAll();
                     break;
 
-                case 3:
-                    System.out.println("=============== La lista de Proveedores Invalidos es: ============");
-                    proveedorController.findAllOff();
-                    break;
-
-                case 4: System.out.println("Ingrese el C.U.I.T del proveedor a editar: ");
+                case 3: System.out.println("Ingrese el C.U.I.T del proveedor a editar: ");
                     String cuitPr = leer.nextLine();
                     if (proveedorController.findOne(cuitPr)!=null) {
                         System.out.println("Ingrese el nombre del proveedor: ");
@@ -75,19 +69,25 @@ public class MenuProveedor {
                     }
                     break;
 
-                case 5:
+                case 4:
                     System.out.println("Ingrese el C.U.I.T. del proveedor a Buscar: ");
                     String cuitP = leer.nextLine();
-                    proveedorController.findOne(cuitP);
+                    Proveedor proveedor = proveedorController.findOne(cuitP);
+                    if (proveedor!=null){
+                        System.out.println("El proveedor buscado es: "+proveedor.toString());
+                    } else {
+                        System.out.println("El cuit ingresado no corresponde a ningún proveedor");
+                    }
+
                     break;
 
-                case 6:
+                case 5:
                     System.out.println("Ingrese el C.U.I.T. del proveedor a eliminar: ");
                     String cuitd = leer.nextLine();
                     proveedorController.delete(cuitd);
                     break;
 
-                case 7:
+                case 6:
                     System.out.println("Ha salido exitosamente");
                     MenuPrincipal menuPrincipal = new MenuPrincipal();
                     menuPrincipal.mostrarMenuPrincipal();

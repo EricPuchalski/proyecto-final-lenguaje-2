@@ -24,12 +24,11 @@ public class MenuTransportista {
         System.out.println("Por favor ingrese la opción que desee: ");
         System.out.println("1. Crear transportista");
         System.out.println("2. Ver transportistas");
-        System.out.println("3. Ver transportistas eliminados");
-        System.out.println("4. Buscar transportista por CUIT");
-        System.out.println("5. Editar transportista");
-        System.out.println("6. Eliminar transportista");
-        System.out.println("7. Informar posición del pedido");
-        System.out.println("8. Salir del Menu de transportista");
+        System.out.println("3. Buscar transportista por CUIT");
+        System.out.println("4. Editar transportista");
+        System.out.println("5. Eliminar transportista");
+        System.out.println("6. Informar posición del pedido");
+        System.out.println("7. Salir del Menu de transportista");
         System.out.println("----------------------------");
 
         String opcion = scanner.nextLine();
@@ -77,16 +76,12 @@ public class MenuTransportista {
                     transportistaController.findAll();
                     break;
                 case "3":
-                    System.out.println("============== La lista de Transportistas eliminados es: ===============");
-                    transportistaController.findAllOff();
-                    break;
-                case "4":
                     System.out.println("Por favor ingrese el CUIT del transportista");
                     String cuitTransportista = scanner.nextLine();
                     transportistaController.findOne(cuitTransportista);
 
                     break;
-                case "5":
+                case "4":
                     System.out.println("Por favor ingrese el CUIT del transportista");
                     String cuitTransportistaEditar = scanner.nextLine();
                     if (transportistaController.findOne(cuitTransportistaEditar) != null) {
@@ -121,7 +116,7 @@ public class MenuTransportista {
                     }
 
                     break;
-                case "6":
+                case "5":
                     System.out.println("Por favor ingrese el cuit del transportista a eliminar: ");
                     String cuitTransportistaEliminado = scanner.nextLine();
                     if (transportistaController.findOne(cuitTransportistaEliminado) != null) {
@@ -130,7 +125,7 @@ public class MenuTransportista {
                         System.out.println("El transportista ingresado no existe");
                     }
                     break;
-                case "7":
+                case "6":
                     System.out.println("Por favor ingrese el numero del pedido para informar su posición");
                     String nroPedido = scanner.nextLine();
                     Pedido pedidoEncontrado = pedidoController.buscarPedidoPorNumero(nroPedido);
@@ -148,7 +143,7 @@ public class MenuTransportista {
                     } else {
                         System.out.println("Ocurrió un error, vuelva a intentarlo nuevamente");
                     }
-                case "8":
+                case "7":
                     System.out.println("Ha salido exitosamente");
                     MenuPrincipal menuPrincipal = new MenuPrincipal();
                     menuPrincipal.mostrarMenuPrincipal();
