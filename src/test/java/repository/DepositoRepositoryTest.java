@@ -1,6 +1,7 @@
 package repository;
 
-import model.Deposito;
+import org.example.model.Deposito;
+import org.example.repository.DepositoRepository;
 
 @ExtendWith(MockitoExtension.class)
 class DepositoRepositoryTest {
