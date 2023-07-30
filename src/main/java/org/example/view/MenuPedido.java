@@ -109,7 +109,6 @@ public class MenuPedido {
                             Pedido pedido = new Pedido(numeroPedido, cliente, depositoOrigen, depositoDestino, transportista, estadoPedido, seguimiento);
                             pedido.setInicioPedido(LocalDate.now());
 
-
                             do {
                                 System.out.println("Por favor ingrese el producto");
                                 for (Producto pr: productoController.findAll()
