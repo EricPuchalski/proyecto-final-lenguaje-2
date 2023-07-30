@@ -37,9 +37,8 @@ public class ProveedorService implements CRUD<Proveedor> {
 
     public Proveedor findOne(String cuit) {
         Proveedor proveedor = null;
-        if (findOne(cuit) != null) {
-            Proveedor pr = proveedorRepository.findOne(cuit);
-            proveedor = pr;
+        if (proveedorRepository.findOne(cuit) != null) {
+            proveedor = proveedorRepository.findOne(cuit);
         }
         return proveedor;
     }

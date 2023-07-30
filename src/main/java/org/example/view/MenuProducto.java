@@ -1,18 +1,23 @@
 package org.example.view;
 
 import org.example.controller.ProductoController;
+import org.example.controller.ProveedorController;
 import org.example.model.CategoriaProducto;
 import org.example.model.Producto;
 import org.example.model.Proveedor;
+import org.example.repository.ProveedorRepository;
+import org.example.service.ProveedorService;
 
 import java.util.Scanner;
 
 public class MenuProducto {
     private String opcion;
     private ProductoController productoController;
+    ProveedorController proveedorController;
 
     public MenuProducto(ProductoController productoController) {
         this.productoController = productoController;
+        this.proveedorController = new ProveedorController(new ProveedorService(new ProveedorRepository()));
     }
 
 
@@ -67,12 +72,12 @@ public class MenuProducto {
 
 
                     String tipoProducto = scanner.nextLine();
-                    productoController.mostrarProveedores();
+                    proveedorController.findAll();
                     System.out.println("----------------------------");
                     System.out.println("Por favor ingrese el cuit del proveedor");
                     String nombreProveedor = scanner.nextLine();
 
-                    Proveedor proveedorDelProducto = productoController.buscarProveedorPorCuit(nombreProveedor);
+                    Proveedor proveedorDelProducto = proveedorController.findOne(nombreProveedor);
                     CategoriaProducto categoriaProducto = new CategoriaProducto();
 
                     switch (tipoProducto) {
@@ -164,10 +169,10 @@ public class MenuProducto {
                                 System.out.println("No existe esa categoria de producto");
                                 break;
                         }
-                        productoController.mostrarProveedores();
+                        proveedorController.findAll();
                         System.out.println("Por favor ingrese el cuit del nuevo proveedor");
                         String cuitNuevoProveedor = scanner.nextLine();
-                        Proveedor proveedorNuevo = productoController.buscarProveedorPorCuit(cuitNuevoProveedor);
+                        Proveedor proveedorNuevo = proveedorController.findOne(cuitNuevoProveedor);
 
                         productoController.upDate(new Producto(codigoProductoEditado, nuevoNombre, nuevoAncho, nuevaAltura, nuevoLargo, nuevoPeso, nuevaCategoria, proveedorNuevo));
 

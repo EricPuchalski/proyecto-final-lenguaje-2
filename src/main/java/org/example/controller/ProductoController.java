@@ -38,11 +38,5 @@ public class ProductoController implements CRUD<Producto>{
         productoService.upDate(producto);
     }
 
-    public List<Proveedor> mostrarProveedores(){
-        return productoService.mostrarProveedores();
-    }
 
-    public Proveedor buscarProveedorPorCuit(String cuit){
-        return productoService.buscarProveedorPorCuit(cuit);
-    }
 }

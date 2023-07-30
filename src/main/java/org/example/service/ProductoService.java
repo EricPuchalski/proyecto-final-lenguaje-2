@@ -15,17 +15,6 @@ public class ProductoService implements CRUD<Producto>{
         this.productoRepository = productoRepository;
     }
 
-    public List<Proveedor> mostrarProveedores(){
-        List<Proveedor> listaProveedores = new ArrayList<>();
-        for (Proveedor proveedor: productoRepository.mostrarProveedores()
-             ) {
-            System.out.println(proveedor.toString());
-            listaProveedores.add(proveedor);
-        }
-        return listaProveedores;
-    }
-
-
     public void save(Producto producto) {
         if (findOne(producto.getCodigo()) == null) {
             productoRepository.save(producto);
@@ -68,13 +57,5 @@ public class ProductoService implements CRUD<Producto>{
             productoRepository.delete(codigo);
         }
     }
-    public Proveedor buscarProveedorPorCuit(String cuit){
-        Proveedor proveedorBuscado = productoRepository.buscarProveedorPorCuit(cuit);
-        if (proveedorBuscado!=null){
-            System.out.println(proveedorBuscado.toString());
-        } else {
-            System.out.println("Error, no existe un proveedor con el cuit ingresado");
-        }
-        return proveedorBuscado;
-    }
+
 }
