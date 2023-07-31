@@ -90,6 +90,7 @@ public class ProductoRepository implements CRUD<Producto>{
             findOne(producto.getCodigo()).setAncho(producto.getAncho());
             findOne(producto.getCodigo()).setPeso(producto.getPeso());
             findOne(producto.getCodigo()).setLargo(producto.getLargo());
+            findOne(producto.getCodigo()).setProveedor(producto.getProveedor());//**
         }
     }
 
