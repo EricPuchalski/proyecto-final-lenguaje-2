@@ -17,25 +17,32 @@ public class MenuProducto {
     private ProductoController productoController;
     ProveedorController proveedorController;
 
+    private boolean regresarMenuPrincipal;//**
+
+
     public MenuProducto(ProductoController productoController) {
         this.productoController = productoController;
         this.proveedorController = new ProveedorController(new ProveedorService(new ProveedorRepository()));
+        this.regresarMenuPrincipal = true;//**
+
     }
 
 
     public void mostrarMenuProducto() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("----------------------------");
-        System.out.println("Por favor ingrese la opción que desee: ");
-        System.out.println("----------------------------");
-        System.out.println("1. Crear Producto");
-        System.out.println("2. Ver Productos");
-        System.out.println("3. Buscar producto por código");
-        System.out.println("4. Editar producto");
-        System.out.println("5. Eliminar producto");
-        System.out.println("6. Salir del Menu de producto");
-        System.out.println("----------------------------");
-        this.opcion = scanner.nextLine();
+        do {//**
+
+            System.out.println("----------------------------");
+            System.out.println("Por favor ingrese la opción que desee: ");
+            System.out.println("----------------------------");
+            System.out.println("1. Crear Producto");
+            System.out.println("2. Ver Productos");
+            System.out.println("3. Buscar producto por código");
+            System.out.println("4. Editar producto");
+            System.out.println("5. Eliminar producto");
+            System.out.println("6. Salir del Menu de producto");
+            System.out.println("----------------------------");
+            this.opcion = scanner.nextLine();
 
 
             switch (opcion) {
@@ -51,7 +58,7 @@ public class MenuProducto {
                     if (productoController.findOne(codigo) == null) {
                         System.out.println("Por favor ingrese el nombre");
                         nombre = scanner.nextLine();
-                        try{
+                        try {
                             System.out.println("Por favor ingrese el peso");
                             peso = scanner.nextDouble();
                             System.out.println("Por favor ingrese la altura");
@@ -60,7 +67,7 @@ public class MenuProducto {
                             anchoProducto = scanner.nextDouble();
                             System.out.println("Por favor ingrese el largo del producto");
                             largoProducto = scanner.nextDouble();
-                        } catch(Exception e){
+                        } catch (Exception e) {
                             System.out.println("Se produjo un error con los datos introducidos");
                             break;
                         }
@@ -115,7 +122,7 @@ public class MenuProducto {
                             System.out.println("No existe esa categoria de producto");
                             break;
                     }
-                    if (proveedorDelProducto!=null && categoriaProducto!=null){
+                    if (proveedorDelProducto != null && categoriaProducto != null) {
                         productoController.create(new Producto(codigo, nombre, anchoProducto, alturaProducto, largoProducto, peso, categoriaProducto, proveedorDelProducto));
                         System.out.println("Producto creado exitosamente");
                     } else {
@@ -126,7 +133,7 @@ public class MenuProducto {
                     break;
                 case "2":
                     System.out.println("============== La lista de Productos actuales es: ===============");
-                    for (Producto pr: productoController.findAll()) {
+                    for (Producto pr : productoController.findAll()) {
                         System.out.println(pr.toString());
                     }
                     break;
@@ -148,16 +155,16 @@ public class MenuProducto {
                         Double nuevaAltura = 0.0;
                         Double nuevoAncho = 0.0;
                         Double nuevoLargo = 0.0;
-                        try{
+                        try {
                             System.out.println("Por favor ingrese el nuevo peso");
-                             nuevoPeso = scanner.nextDouble();
+                            nuevoPeso = scanner.nextDouble();
                             System.out.println("Por favor ingrese la nueva altura");
-                             nuevaAltura = scanner.nextDouble();
+                            nuevaAltura = scanner.nextDouble();
                             System.out.println("Por favor ingrese el nuevo ancho del producto");
-                             nuevoAncho = scanner.nextDouble();
+                            nuevoAncho = scanner.nextDouble();
                             System.out.println("Por favor ingrese el nuevo largo del producto");
-                             nuevoLargo = scanner.nextDouble();
-                        } catch(Exception e){
+                            nuevoLargo = scanner.nextDouble();
+                        } catch (Exception e) {
                             System.out.println("Se produjo un error con los datos introducidos");
                             break;
                         }
@@ -198,7 +205,7 @@ public class MenuProducto {
                                 break;
                         }
                         proveedorController.findAll();
-                        for (Proveedor pr: proveedorController.findAll()) {
+                        for (Proveedor pr : proveedorController.findAll()) {
                             System.out.println(pr.toString());
                         }
                         System.out.println("Por favor ingrese el cuit del nuevo proveedor");
@@ -224,15 +231,16 @@ public class MenuProducto {
                     break;
                 case "6":
                     System.out.println("Ha salido exitosamente");
-                    MenuPrincipal menuPrincipal = new MenuPrincipal();
-                    menuPrincipal.mostrarMenuPrincipal();
+                    this.regresarMenuPrincipal = true;
                     break;
                 default:
                     System.out.println("Opción inválida");
                     break;
             }
+        }while (!regresarMenuPrincipal);//**
 
-
-        }
+        }public void setRegresarMenuPrincipal(boolean regresarMenuPrincipal) {
+        this.regresarMenuPrincipal = regresarMenuPrincipal;
+    }
 
 }

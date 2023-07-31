@@ -10,12 +10,17 @@ import java.util.Scanner;
 
 public class MenuProveedor {
     ProveedorController proveedorController;
+    private boolean regresarMenuPrincipal;//**
+
     public MenuProveedor(ProveedorController proveedorController) {
         this.proveedorController = proveedorController;
+        this.regresarMenuPrincipal = true;//**
+
     }
 
-    public void mostrarMenuProveedor(){
+    public void mostrarMenuProveedor() {
         Scanner leer = new Scanner(System.in);
+        do {//**
 
 
             System.out.println("=============== Menu ====================");
@@ -44,21 +49,22 @@ public class MenuProveedor {
                         String email = leer.nextLine();
                         proveedorController.create(new Proveedor(cuit, nombre, direc, tel, email));
                         System.out.println(" Proveedor creado correctamente");
-                    }else{
+                    } else {
                         System.out.println("El proveedor ya existe");
                     }
                     break;
 
                 case 2:
                     System.out.println("============== La lista de Proveedores actuales es: ===============");
-                    for (Proveedor pr: proveedorController.findAll()) {
+                    for (Proveedor pr : proveedorController.findAll()) {
                         System.out.println(pr.toString());
                     }
                     break;
 
-                case 3: System.out.println("Ingrese el C.U.I.T del proveedor a editar: ");
+                case 3:
+                    System.out.println("Ingrese el C.U.I.T del proveedor a editar: ");
                     String cuitPr = leer.nextLine();
-                    if (proveedorController.findOne(cuitPr)!=null) {
+                    if (proveedorController.findOne(cuitPr) != null) {
                         System.out.println("Ingrese el nombre del proveedor: ");
                         String nombr = leer.nextLine();
                         System.out.println("Ingrese la direccion del proveedor: ");
@@ -69,7 +75,7 @@ public class MenuProveedor {
                         String emailP = leer.nextLine();
                         proveedorController.upDate(new Proveedor(cuitPr, nombr, dire, telP, emailP));
                         System.out.println("Proveedor editado correctamente");
-                    }else {
+                    } else {
                         System.out.println("El proveedor ingresado no existe");
                     }
                     break;
@@ -78,8 +84,8 @@ public class MenuProveedor {
                     System.out.println("Ingrese el C.U.I.T. del proveedor a Buscar: ");
                     String cuitP = leer.nextLine();
                     Proveedor proveedor = proveedorController.findOne(cuitP);
-                    if (proveedor!=null){
-                        System.out.println("El proveedor buscado es: "+proveedor.toString());
+                    if (proveedor != null) {
+                        System.out.println("El proveedor buscado es: " + proveedor.toString());
                     } else {
                         System.out.println("El cuit ingresado no corresponde a ningún proveedor");
                     }
@@ -89,25 +95,26 @@ public class MenuProveedor {
                 case 5:
                     System.out.println("Ingrese el C.U.I.T. del proveedor a eliminar: ");
                     String cuitd = leer.nextLine();
-                    Proveedor proveedorEliminado=proveedorController.findOne(cuitd);
-                    if(proveedorEliminado!=null){
-                    proveedorController.delete(cuitd);
-                    System.out.println("Proveedor eliminado correctamente");}else {
+                    Proveedor proveedorEliminado = proveedorController.findOne(cuitd);
+                    if (proveedorEliminado != null) {
+                        proveedorController.delete(cuitd);
+                        System.out.println("Proveedor eliminado correctamente");
+                    } else {
                         System.out.println("El proveedor ingresado no existe");
                     }
                     break;
 
                 case 6:
                     System.out.println("Ha salido exitosamente");
-                    MenuPrincipal menuPrincipal = new MenuPrincipal();
-                    menuPrincipal.mostrarMenuPrincipal();
+                    this.regresarMenuPrincipal = true;
                     break;
 
                 default:
                     System.out.println("La opcion ingresada no existe, intente nuevamente..");
             }
-
-
+        } while (!regresarMenuPrincipal);//**
+    }public void setRegresarMenuPrincipal(boolean regresarMenuPrincipal) {
+        this.regresarMenuPrincipal = regresarMenuPrincipal;
 
     }
 }

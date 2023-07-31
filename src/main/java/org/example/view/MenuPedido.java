@@ -21,21 +21,25 @@ public class MenuPedido {
      ProductoController productoController;
 
      EmpleadoController empleadoController;
+     EmpleadoRepository empleadoRepository;
+     EmpleadoService empleadoService;
 
 
 
     ClienteController clienteController;
 
 
-    public MenuPedido(PedidoController pedidoController) {
+    public MenuPedido(PedidoController pedidoController, DepositoController depositoController, SectorRepository sectorRepository, TransportistaController transportistaController, ProductoController productoController, ClienteController clienteController, EmpleadoRepository empleadoRepository, EmpleadoService empleadoService,EmpleadoController empleadoController) {
         this.pedidoController = pedidoController;
-        this.depositoController = new DepositoController(new DepositoService(new DepositoRepository()));
-        this.sectorRepository = new SectorRepository();
-        this.transportistaController = new TransportistaController(new TransportistaService(new TransportistaRepository()));
-        this.productoController = new ProductoController(new ProductoService(new ProductoRepository()));
-        this.clienteController = new ClienteController(new ClienteService(new ClienteRepository()));
-        this.empleadoController = new EmpleadoController(new EmpleadoService(new EmpleadoRepository()));
-        this.regresarMenuPrincipal = true;//**
+        this.depositoController = depositoController;
+        this.sectorRepository = sectorRepository;
+        this.transportistaController = transportistaController;
+        this.productoController = productoController;
+        this.clienteController = clienteController;
+        this.empleadoRepository = empleadoRepository;
+        this.empleadoService = new EmpleadoService(empleadoRepository);
+        this.empleadoController=empleadoController;
+
     }
 
     public void mostrarMenuPedido() {
