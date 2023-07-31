@@ -43,6 +43,7 @@ public class MenuCliente {
                         String telefono = scanner.nextLine();
 
                         clienteController.create(new Cliente(cuit, nombre, apellido, direccion, telefono));
+                        System.out.println("Cliente creado correctamente");
                     } else {
                         System.out.println("El cliente ingresado ya existe.");
                     }
@@ -93,7 +94,12 @@ public class MenuCliente {
                     System.out.println("Por favor ingrese el cuit del cliente a eliminar");
                     String cuitClienteEliminado = scanner.nextLine();
                     Cliente clienteEliminado = clienteController.findOne(cuitClienteEliminado);
-                    clienteController.delete(clienteEliminado.getCuit());
+                    if (clienteEliminado != null) {
+                        clienteController.delete(clienteEliminado.getCuit());
+                        System.out.println("Cliente eliminado correctamente");
+                    } else {
+                        System.out.println("El cliente con el CUIT proporcionado no fue encontrado.");
+                    }
 
 
                     break;

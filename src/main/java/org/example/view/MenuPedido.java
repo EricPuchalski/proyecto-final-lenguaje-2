@@ -157,6 +157,10 @@ public class MenuPedido {
                         String nroPedido = scanner.nextLine();
                         System.out.println("Por favor asigne el empleado a cargo");
                         empleadoController.findAll();
+                        for (Empleado empleadoRecorrido:  empleadoController.findAll()
+                        ) {
+                            System.out.println(empleadoRecorrido.toString());
+                        }
                         String cuitEmpleado = scanner.nextLine();
 
                         Pedido pedidoEncontrado = pedidoController.buscarPedidoPorNumero(nroPedido);
@@ -295,7 +299,7 @@ public class MenuPedido {
                             System.out.println("El pedido no se encontró, intentelo nuevamente");
                             System.out.println("----------------------------");
                         }
-
+                        break;
                     case 10:
                         System.out.println("Ha salido exitosamente");
                         MenuPrincipal menuPrincipal = new MenuPrincipal();
