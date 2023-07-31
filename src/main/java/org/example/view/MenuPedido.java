@@ -54,7 +54,8 @@ public class MenuPedido {
                 System.out.println("7. Enviar a sucursal destino");
                 System.out.println("8. Entregar pedido");
                 System.out.println("9. Calcular distancia del pedido");
-                System.out.println("10. Salir del menu pedido");
+                System.out.println("10.Ver todos los pedidos ");
+                System.out.println("11. Salir del menu pedido");
                 System.out.println("----------------------------");
 
                 int opcion = scanner.nextInt();
@@ -303,6 +304,12 @@ public class MenuPedido {
                         }
                         break;
                     case 10:
+                        List<Pedido> pedidos = pedidoController.mostrarTodosLosPedidos();
+                        for (Pedido pedido : pedidos) {
+                            System.out.println(pedido.toString()); // O utiliza el método que imprime la información relevante del pedido
+                        }
+                        break;
+                    case 11:
                         System.out.println("Ha salido exitosamente");
                         this.regresarMenuPrincipal = true;
                         break;
