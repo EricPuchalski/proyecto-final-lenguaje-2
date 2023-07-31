@@ -67,16 +67,7 @@ public class DepositoRepository implements CRUD<Deposito> {
         return depositosHabilitados;
     }
 
-    @Override
-    public List<Deposito> findAllOff() {
-        List<Deposito>depositosDeshabilitados = new ArrayList<>();
-        for(Deposito dr : depositos){
-            if(dr.getEstado() == Deposito.Estado.DESHABILITADO){
-                depositosDeshabilitados.add(dr);
-            }
-        }
-        return depositosDeshabilitados;
-    }
+
 
     @Override
     public Deposito findOne(String id) {

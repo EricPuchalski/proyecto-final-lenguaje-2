@@ -26,9 +26,6 @@ public class ProductoController implements CRUD<Producto> {
     public List<Producto> findAll(){
         return productoService.findAll();
     }
-    public List<Producto> findAllOff(){
-        return productoService.findAllOff();
-    }
 
     public void delete(String codigo){
         productoService.delete(codigo);

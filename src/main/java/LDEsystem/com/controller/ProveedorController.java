@@ -21,10 +21,6 @@ public class ProveedorController implements CRUD<Proveedor> {
         return proveedorService.findAll();
     }
 
-    @Override
-    public List<Proveedor> findAllOff() {
-        return proveedorService.findAllOff();
-    }
 
     public void delete(String cuit) {
         proveedorService.delete(cuit);

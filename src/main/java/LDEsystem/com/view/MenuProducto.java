@@ -8,6 +8,7 @@ import LDEsystem.com.model.Proveedor;
 import LDEsystem.com.repository.ProveedorRepository;
 import LDEsystem.com.service.ProveedorService;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MenuProducto {
@@ -15,24 +16,32 @@ public class MenuProducto {
     private ProductoController productoController;
     ProveedorController proveedorController;
 
+    private boolean regresarMenuPrincipal;//**
+
+
     public MenuProducto(ProductoController productoController) {
         this.productoController = productoController;
         this.proveedorController = new ProveedorController(new ProveedorService(new ProveedorRepository()));
+        this.regresarMenuPrincipal = true;//**
+
     }
 
 
     public void mostrarMenuProducto() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Por favor ingrese la opción que desee: ");
-        System.out.println("1. Crear Producto");
-        System.out.println("2. Ver Productos");
-        System.out.println("3. Ver Productos eliminados");
-        System.out.println("4. Buscar producto por código");
-        System.out.println("5. Editar producto");
-        System.out.println("6. Eliminar producto");
-        System.out.println("7. Salir del Menu de producto");
-        System.out.println("----------------------------");
-        this.opcion = scanner.nextLine();
+        do {//**
+
+            System.out.println("----------------------------");
+            System.out.println("Por favor ingrese la opción que desee: ");
+            System.out.println("----------------------------");
+            System.out.println("1. Crear Producto");
+            System.out.println("2. Ver Productos");
+            System.out.println("3. Buscar producto por código");
+            System.out.println("4. Editar producto");
+            System.out.println("5. Eliminar producto");
+            System.out.println("6. Salir del Menu de producto");
+            System.out.println("----------------------------");
+            this.opcion = scanner.nextLine();
 
 
             switch (opcion) {
@@ -48,16 +57,25 @@ public class MenuProducto {
                     if (productoController.findOne(codigo) == null) {
                         System.out.println("Por favor ingrese el nombre");
                         nombre = scanner.nextLine();
-                        System.out.println("Por favor ingrese el peso");
-                        peso = scanner.nextDouble();
-                        System.out.println("Por favor ingrese la altura");
-                        alturaProducto = scanner.nextDouble();
-                        System.out.println("Por favor ingrese el ancho del producto");
-                        anchoProducto = scanner.nextDouble();
-                        System.out.println("Por favor ingrese el largo del producto");
-                        largoProducto = scanner.nextDouble();
+                        try {
+                            System.out.println("Por favor ingrese el peso");
+                            peso = scanner.nextDouble();
+                            System.out.println("Por favor ingrese la altura");
+                            alturaProducto = scanner.nextDouble();
+                            System.out.println("Por favor ingrese el ancho del producto");
+                            anchoProducto = scanner.nextDouble();
+                            System.out.println("Por favor ingrese el largo del producto");
+                            largoProducto = scanner.nextDouble();
+                        } catch (Exception e) {
+                            System.out.println("Se produjo un error con los datos introducidos");
+                            break;
+                        }
+
                     } else {
+                        System.out.println("----------------------------");
                         System.out.println("El producto ingresado ya existe");
+                        System.out.println("----------------------------");
+                        break;
                     }
                     scanner.nextLine();
                     System.out.println("Por favor ingrese la Categoria del producto");
@@ -103,6 +121,13 @@ public class MenuProducto {
                             System.out.println("No existe esa categoria de producto");
                             break;
                     }
+                    if (proveedorDelProducto != null && categoriaProducto != null) {
+                        productoController.save(new Producto(codigo, nombre, anchoProducto, alturaProducto, largoProducto, peso, categoriaProducto, proveedorDelProducto));
+                        System.out.println("Producto creado exitosamente");
+                    } else {
+                        System.out.println("La creación del producto falló");
+                    }
+
 
                     productoController.save(new Producto(codigo, nombre, anchoProducto, alturaProducto, largoProducto, peso, categoriaProducto, proveedorDelProducto));
                     System.out.println("Ha sido creado exitosamente");
@@ -113,12 +138,9 @@ public class MenuProducto {
                     productoController.findAll();
                     System.out.println("================================================================");
                     break;
-                case "3":
-                    System.out.println("============== La lista de Productos eliminados es: ===============");
-                    productoController.findAllOff();
-                    System.out.println("================================================================");
-                    break;
+
                 case "4":
+
                     System.out.println("Por favor ingrese el codigo del producto");
                     String codigoProducto = scanner.nextLine();
                     if (productoController.findOne(codigoProducto) != null) {
@@ -127,22 +149,33 @@ public class MenuProducto {
                     }else{
                         System.out.println("El codigo ingresado es inexistente");
                         System.out.println("================================================================");
-                    }
+                    }else System.out.println("El codigo ingresado no coincide con ningún producto");
+
                     break;
-                case "5":
+                case "4":
                     System.out.println("Por favor ingrese el coodigo del producto a editar: ");
                     String codigoProductoEditado = scanner.nextLine();
                     if (productoController.findOne(codigoProductoEditado) != null) {
                         System.out.println("Por favor ingrese el nuevo nombre");
                         String nuevoNombre = scanner.nextLine();
-                        System.out.println("Por favor ingrese el nuevo peso");
-                        Double nuevoPeso = scanner.nextDouble();
-                        System.out.println("Por favor ingrese la nueva altura");
-                        Double nuevaAltura = scanner.nextDouble();
-                        System.out.println("Por favor ingrese el nuevo ancho del producto");
-                        Double nuevoAncho = scanner.nextDouble();
-                        System.out.println("Por favor ingrese el nuevo largo del producto");
-                        Double nuevoLargo = scanner.nextDouble();
+                        Double nuevoPeso = 0.0;
+                        Double nuevaAltura = 0.0;
+                        Double nuevoAncho = 0.0;
+                        Double nuevoLargo = 0.0;
+                        try {
+                            System.out.println("Por favor ingrese el nuevo peso");
+                            nuevoPeso = scanner.nextDouble();
+                            System.out.println("Por favor ingrese la nueva altura");
+                            nuevaAltura = scanner.nextDouble();
+                            System.out.println("Por favor ingrese el nuevo ancho del producto");
+                            nuevoAncho = scanner.nextDouble();
+                            System.out.println("Por favor ingrese el nuevo largo del producto");
+                            nuevoLargo = scanner.nextDouble();
+                        } catch (Exception e) {
+                            System.out.println("Se produjo un error con los datos introducidos");
+                            break;
+                        }
+
                         scanner.nextLine();
                         System.out.println("Ingrese la nueva categoria del producto: ");
                         System.out.println("-----------------------------");
@@ -179,6 +212,9 @@ public class MenuProducto {
                                 break;
                         }
                         proveedorController.findAll();
+                        for (Proveedor pr : proveedorController.findAll()) {
+                            System.out.println(pr.toString());
+                        }
                         System.out.println("Por favor ingrese el cuit del nuevo proveedor");
                         String cuitNuevoProveedor = scanner.nextLine();
                         Proveedor proveedorNuevo = proveedorController.findOne(cuitNuevoProveedor);
@@ -186,13 +222,14 @@ public class MenuProducto {
                         productoController.upDate(new Producto(codigoProductoEditado, nuevoNombre, nuevoAncho, nuevaAltura, nuevoLargo, nuevoPeso, nuevaCategoria, proveedorNuevo));
                         System.out.println("Ha sido editado exitosamente");
                         System.out.println("================================================================");
+                        System.out.println("Producto editado correctamente");
 
                     } else {
                         System.out.println("El codigo ingresado es incorrecto");
                         System.out.println("================================================================");
                     }
                     break;
-                case "6":
+                case "5":
                     System.out.println("Por favor ingrese el codigo del producto a eliminar");
                     String codigoProductoEliminado = scanner.nextLine();
                     if (productoController.findOne(codigoProductoEliminado) != null) {
@@ -208,13 +245,18 @@ public class MenuProducto {
                 case "7":
                     MenuPrincipal menuPrincipal = new MenuPrincipal();
                     menuPrincipal.mostrarMenuPrincipal();
+                case "6":
+                    System.out.println("Ha salido exitosamente");
+                    this.regresarMenuPrincipal = true;
                     break;
                 default:
                     System.out.println("Opción inválida");
                     break;
             }
+        }while (!regresarMenuPrincipal);//**
 
-
-        }
+        }public void setRegresarMenuPrincipal(boolean regresarMenuPrincipal) {
+        this.regresarMenuPrincipal = regresarMenuPrincipal;
+    }
 
 }

@@ -60,16 +60,7 @@ public class ClienteRepository implements CRUD<Cliente> {
         }
         return clientesHabilitados;
     }
-    @Override
-    public List<Cliente> findAllOff() {
-        List<Cliente>clientesDeshabilitados = new ArrayList<>();
-        for(Cliente cr : clientes){
-            if(cr.getEstado() == Cliente.Estado.DESHABILITADO){
-                clientesDeshabilitados.add(cr);
-            }
-        }
-        return clientesDeshabilitados;
-    }
+
 
     public Cliente findOne(String id) {
         Cliente cliente = null;

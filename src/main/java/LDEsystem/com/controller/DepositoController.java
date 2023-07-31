@@ -28,10 +28,6 @@ public class DepositoController implements CRUD<Deposito> {
         return depositoService.findAll();
     }
 
-    @Override
-    public List<Deposito> findAllOff() {
-        return depositoService.findAllOff();
-    }
 
     @Override
     public void upDate(Deposito deposito) {

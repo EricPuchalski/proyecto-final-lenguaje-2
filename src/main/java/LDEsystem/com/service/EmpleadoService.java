@@ -14,15 +14,6 @@ public class EmpleadoService implements CRUD<Empleado> {
         this.empleadoRepository = new EmpleadoRepository();
     }
 
-    public List<Empleado> mostrarEmpleados(){
-        List listaEmpleados = new ArrayList<>();
-        for (Empleado empleado: empleadoRepository.findAll()
-             ) {
-            System.out.println(empleado.toString());
-            listaEmpleados.add(empleado);
-        }
-        return listaEmpleados;
-    }
 
     @Override
     public void save(Empleado empleado) {
@@ -51,23 +42,9 @@ public class EmpleadoService implements CRUD<Empleado> {
 
     @Override
     public List<Empleado> findAll() {
-        List<Empleado>empleadoList = new ArrayList<>();
-        for(Empleado er : empleadoRepository.findAll()){
-            System.out.println(er.toString());
-        }
-
-        return empleadoList;
+        return empleadoRepository.findAll();
     }
 
-    @Override
-    public List<Empleado> findAllOff() {
-        List<Empleado>empleadoList = new ArrayList<>();
-        for(Empleado er : empleadoRepository.findAllOff()){
-            System.out.println(er.toString());
-        }
-
-        return empleadoList;
-    }
 
     @Override
     public void delete(String cuit) {

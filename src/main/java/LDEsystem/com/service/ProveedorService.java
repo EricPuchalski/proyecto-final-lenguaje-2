@@ -21,20 +21,10 @@ public class ProveedorService implements CRUD<Proveedor> {
     }
 
     public List<Proveedor> findAll() {
-        List<Proveedor> proveedorList = new ArrayList<>();
-        for (Proveedor pr : proveedorRepository.findAll()) {
-            System.out.println(pr.toString());
-        }
-        return proveedorList;
+        return proveedorRepository.findAll();
     }
 
-    public List<Proveedor> findAllOff() {
-        List<Proveedor> proveedorList = new ArrayList<>();
-        for (Proveedor pr : proveedorRepository.findAllOff()) {
-            System.out.println(pr.toString());
-        }
-        return proveedorList;
-    }
+
 
     public Proveedor findOne(String cuit) {
         Proveedor proveedor = null;

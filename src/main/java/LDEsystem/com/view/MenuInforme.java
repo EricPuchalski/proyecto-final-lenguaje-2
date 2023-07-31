@@ -17,45 +17,51 @@ public class MenuInforme {
     private ClienteController clienteController;
     private DepositoController depositoController;
     private PedidoController pedidoController;
+    private boolean regresarMenuPrincipal;//**
 
     public MenuInforme(InformeController informeController, ClienteController clienteController, PedidoController pedidoController) {
         this.informeController = informeController;
         this.clienteController = clienteController;
         this.pedidoController = pedidoController;
         depositoController = new DepositoController(new DepositoService(new DepositoRepository()));
+        this.regresarMenuPrincipal = true;//**
+
     }
 
     public void mostrarMenuInforme() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Por favor ingrese la opción que desee: ");
-        System.out.println("1. Mostrar cantidad de pedidos realizados por una sucursal");
-        System.out.println("2. Mostrar cantidad de pedidos en estado Pendiente");
-        System.out.println("3. Mostrar historial de pedidos finalizados de un cliente");
+        do {//**
 
-        System.out.println("4. Mostrar los estados de los pedidos");
-        System.out.println("5. Salir del menu Informe");
+            System.out.println("Por favor ingrese la opción que desee: ");
+            System.out.println("1. Mostrar cantidad de pedidos realizados por una sucursal");
+            System.out.println("2. Mostrar cantidad de pedidos en estado Pendiente");
+            System.out.println("3. Mostrar historial de pedidos finalizados de un cliente");
+
+            System.out.println("4. Mostrar los estados de los pedidos");
+            System.out.println("5. Salir del menu Informe");
 
 
-        System.out.println("----------------------------");
-        String opcion = scanner.nextLine();
+            System.out.println("----------------------------");
+            String opcion = scanner.nextLine();
 
-        switch (opcion) {
-            case "1":
-                System.out.println("Por favor ingrese el código de la sucursal para obtener la cantidad de pedidos realizados:");
-                String codigoSucursal = scanner.nextLine();
-                if(depositoController.findOne(codigoSucursal)!=null) {
-                    int cantidadPedidos = informeController.obtenerCantidadPedidosPorSucursal(codigoSucursal);
-                    System.out.println("La cantidad de pedidos realizados por la sucursal con código " + codigoSucursal + " es: " + cantidadPedidos);
-                }else{
-                    System.out.println("el codigo es erroneo");
-                    System.out.println("////////////////////////////////////////////");
-                }
-                break;
+            switch (opcion) {
+                case "1":
+                    System.out.println("Por favor ingrese el código de la sucursal para obtener la cantidad de pedidos realizados:");
+                    String codigoSucursal = scanner.nextLine();
+                    if (depositoController.findOne(codigoSucursal) != null) {
+                        int cantidadPedidos = informeController.obtenerCantidadPedidosPorSucursal(codigoSucursal);
+                        System.out.println("La cantidad de pedidos realizados por la sucursal con código " + codigoSucursal + " es: " + cantidadPedidos);
+                    } else {
+                        System.out.println("el codigo es erroneo");
+                        System.out.println("////////////////////////////////////////////");
+                    }
+                    break;
+                switch (opcion) {
 
-            case "2":
-                int cantidadPedidosPendientes = informeController.contarPedidosEnEstadoPendiente();
-                System.out.println("La cantidad de pedidos en estado Pendiente es: " + cantidadPedidosPendientes);
-                break;
+                    case "2":
+                        int cantidadPedidosPendientes = informeController.contarPedidosEnEstadoPendiente();
+                        System.out.println("La cantidad de pedidos en estado Pendiente es: " + cantidadPedidosPendientes);
+                        break;
 
             case "3":
                 System.out.println("Por favor ingrese el cuit del cliente: ");

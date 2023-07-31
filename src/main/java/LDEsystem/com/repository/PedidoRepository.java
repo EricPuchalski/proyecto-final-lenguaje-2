@@ -58,14 +58,7 @@ public class PedidoRepository {
             pedidoEncontrado.setEstadoPedido(pedidoEncontrado.getDepositoOrigen().getSectores().get(3).getDescripcion());
         }
     }
-//
-//    public void despacharPedido(String numero, String nroRastreo){
-//        Pedido pedidoEncontrado = buscarPedidoPorNumero(numero);
-//        if (pedidoEncontrado!=null){
-//            pedidoEncontrado.setSectorOrigen(sectorRepository.findOneB("5")) ;
-//            pedidoEncontrado.setEstadoPedido(pedidoEncontrado.getSectorOrigen().getDescripcion());
-//        }
-//    }
+
 public void despacharPedido(String numero) {
     Pedido pedidoEncontrado = buscarPedidoPorNumero(numero);
     if (pedidoEncontrado != null) {
@@ -123,26 +116,11 @@ public void despacharPedido(String numero) {
                 if (empleadoReceptor != null) {
                     // Asignar el empleado receptor al remito
                     remito.setEmpleadoReceptor(empleadoReceptor);
-                } else {
-                    System.out.println("Error: No se encontró un empleado con el CUIT proporcionado.");
                 }
-            } else {
-                System.out.println("Error: El pedido no tiene un remito asignado.");
             }
         }
     }
 
-  /*  public void entregarPedido(String numero, int calificacion) {
-        Pedido pedidoEncontrado = buscarPedidoPorNumero(numero);
-        if (pedidoEncontrado != null) {
-            pedidoEncontrado.setEstadoPedido(pedidoEncontrado.getDepositoDestino().getSectores().get(6).getDescripcion());
-
-            // Establecemos la calificación del proveedor para cada línea de pedido
-            for (LineaPedido lineaPedido : pedidoEncontrado.getLineasPedidos()) {
-                lineaPedido.setCalificacionProveedor(calificacion); // Puedes cambiar el valor de la calificación según tus criterios
-            }
-        }
-    }*/
   public void entregarPedido(String numero, List<Integer> calificacionesProveedor) {
       Pedido pedidoEncontrado = buscarPedidoPorNumero(numero);
       if (pedidoEncontrado != null) {

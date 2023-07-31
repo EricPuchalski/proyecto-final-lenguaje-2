@@ -22,20 +22,9 @@ public class DepositoService implements CRUD<Deposito> {
     }
 
     public List<Deposito> findAll() {
-        List<Deposito> depositoList = new ArrayList<>();
-        for (Deposito dp : depositoRepository.findAll()) {
-            System.out.println(dp.toString());
-        }
-        return depositoList;
+       return depositoRepository.findAll();
     }
 
-    public List<Deposito> findAllOff() {
-        List<Deposito> depositoList = new ArrayList<>();
-        for (Deposito dp : depositoRepository.findAllOff()) {
-            System.out.println(dp.toString());
-        }
-        return depositoList;
-    }
 
     public Deposito findOne(String codigo) {
         Deposito deposito = null;
@@ -57,18 +46,5 @@ public class DepositoService implements CRUD<Deposito> {
             depositoRepository.delete(codigo);
         }
     }
-    public List<Sector> buscarSectoresDeUnDepositoPorCodigo(String codigo){
-        List<Sector> sectoresDelDeposito = depositoRepository.buscarSectoresDeUnDepositoPorCodigo(codigo);
-        if (!sectoresDelDeposito.isEmpty()){
-            for (Sector sector: sectoresDelDeposito
-            ) {
-                System.out.println("Sectores del deposito: "+ sector.getDescripcion());
-            }
-        } else{
-            System.out.println("EL deposito no tiene sectores");
-        }
-        return sectoresDelDeposito;
-    }
-
 
 }

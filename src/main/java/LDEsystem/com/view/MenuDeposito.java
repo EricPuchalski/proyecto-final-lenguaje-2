@@ -10,6 +10,7 @@ public class MenuDeposito {
 
     private DepositoController depositoController;
     private String opcion;
+    private boolean regresarMenuPrincipal;//**
 
     public MenuDeposito(DepositoController depositoController) {
         this.depositoController = depositoController;
@@ -17,14 +18,14 @@ public class MenuDeposito {
 
     public void mostrarMenuDeposito() {
         Scanner scanner = new Scanner(System.in);
+        do {//**
         System.out.println("Por favor ingrese la opción que desee: ");
         System.out.println("1. Crear depósito");
         System.out.println("2. Ver depósitos");
-        System.out.println("3. Ver depósitos eliminados");
-        System.out.println("4. Buscar depósito por código");
-        System.out.println("5. Editar depósito");
-        System.out.println("6. Eliminar depósito");
-        System.out.println("7. Salir del Menú de depósito");
+        System.out.println("3. Buscar depósito por código");
+        System.out.println("4. Editar depósito");
+        System.out.println("5. Eliminar depósito");
+        System.out.println("6. Salir del Menú de depósito");
         System.out.println("----------------------------");
         this.opcion = scanner.nextLine();
 
@@ -61,12 +62,9 @@ public class MenuDeposito {
                     depositoController.findAll();
                     System.out.println("================================================================");
                     break;
+
+
                 case "3":
-                    System.out.println("============== La lista de Clientes eliminados es: ===============");
-                    depositoController.findAllOff();
-                    System.out.println("================================================================");
-                    break;
-                case "4":
                     System.out.println("Por favor ingrese el código del depósito");
                     String codigoDeposito = scanner.nextLine();
                     if (depositoController.findOne(codigoDeposito) != null) {
@@ -76,7 +74,7 @@ public class MenuDeposito {
                     }
                     System.out.println("================================================================");
                     break;
-                case "5":
+                case "4":
                     System.out.println("Por favor ingrese el código del depósito a editar");
                     String codigoDepositoEditar = scanner.nextLine();
                     if (depositoController.findOne(codigoDepositoEditar) != null) {
@@ -94,7 +92,7 @@ public class MenuDeposito {
                         Double nlat = scanner.nextDouble();
                         System.out.println("Por favor ingrese la nueva longitud del depósito");
                         Double nlon = scanner.nextDouble();
-
+                        System.out.println("Deposito editado correctamente");
                         depositoController.upDate(new Deposito(codigoDepositoEditar, nuevoNombre, nuevaDireccion, nuevoTelefono, nuevoEmail, nuevoContinente, new Posicion(nlat, nlon)));
                         System.out.println("ha sido editado exitosamente");
                         System.out.println("================================================================");
@@ -103,23 +101,32 @@ public class MenuDeposito {
                         System.out.println("================================================================");
                     }
                     break;
-                case "6":
+                case "5":
                     System.out.println("Por favor ingrese el código del depósito a eliminar");
                     String codigoDepositoEliminar = scanner.nextLine();
                     Deposito depositoEliminar = depositoController.findOne(codigoDepositoEliminar);
                     depositoController.delete(depositoEliminar.getCodigo());
                     System.out.println("ha sido eliminado exitosamente");
                     System.out.println("================================================================");
+                    if (depositoEliminar!=null){
+                        depositoController.delete(depositoEliminar.getCodigo());
+                        System.out.println("Deposito eliminado correctamente");
+                    } else {
+                        System.out.println("No se encontró ningun deposito con el codigo ingresado");
+                    }
+
+
                     break;
-                case "7":
+                case "6":
                     System.out.println("Ha salido exitosamente");
-                    MenuPrincipal menuPrincipal = new MenuPrincipal();
-                    menuPrincipal.mostrarMenuPrincipal();
+                    this.regresarMenuPrincipal = true;
                     break;
                 default:
                     System.out.println("Opción inválida");
                     break;
             }
-
+        }while (!regresarMenuPrincipal);//**
+                        }public void setRegresarMenuPrincipal(boolean regresarMenuPrincipal) {
+        this.regresarMenuPrincipal = regresarMenuPrincipal;
     }
 }

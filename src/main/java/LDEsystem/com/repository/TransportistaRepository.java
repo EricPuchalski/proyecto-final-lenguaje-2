@@ -45,7 +45,13 @@ public class TransportistaRepository implements CRUD<Transportista> {
 
     @Override
     public void upDate(Transportista transportista) {
-
+        Transportista transportistaExistente = findOne(transportista.getCuit());
+        if (transportistaExistente != null) {
+            transportistaExistente.setNombre(transportista.getNombre());
+            transportistaExistente.setTelefono(transportista.getTelefono());
+            transportistaExistente.setEmail(transportista.getEmail());
+            transportistaExistente.setTipo(transportista.getTipo());
+        }
     }
 
     @Override
@@ -59,16 +65,6 @@ public class TransportistaRepository implements CRUD<Transportista> {
         return transportistasHabilitados;
     }
 
-    @Override
-    public List<Transportista> findAllOff() {
-        List<Transportista>transportistasDeshabilitados = new ArrayList<>();
-        for(Transportista tr : transportistas){
-            if(tr.getEstado() == Transportista.Estado.HABILITADO){
-                transportistasDeshabilitados.add(tr);
-            }
-        }
-        return transportistasDeshabilitados;
-    }
 
     @Override
     public Transportista findOne(String id) {

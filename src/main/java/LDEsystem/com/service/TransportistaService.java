@@ -20,7 +20,7 @@ public class TransportistaService implements CRUD<Transportista> {
 
     @Override
     public void save(Transportista transportista) {
-        if (findOne(transportista.getCuit())!=null) {
+        if (transportistaRepository.findOne(transportista.getCuit())== null) {
             transportistaRepository.save(transportista);
         }
     }
@@ -45,23 +45,9 @@ public class TransportistaService implements CRUD<Transportista> {
 
     @Override
     public List<Transportista> findAll() {
-        List<Transportista>transportistaList = new ArrayList<>();
-        for(Transportista tr : transportistaRepository.findAll()){
-            System.out.println(tr.toString());
-        }
-
-        return transportistaList;
+        return transportistaRepository.findAll();
     }
 
-    @Override
-    public List<Transportista> findAllOff() {
-        List<Transportista>transportistaList = new ArrayList<>();
-        for(Transportista tr : transportistaRepository.findAllOff()){
-            System.out.println(tr.toString());
-        }
-
-        return transportistaList;
-    }
 
     @Override
     public void delete(String cuit) {
