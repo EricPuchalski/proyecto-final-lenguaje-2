@@ -10,29 +10,33 @@ public class MenuTransportista {
 
     private TransportistaController transportistaController;
     private PedidoController pedidoController;
+    private boolean regresarMenuPrincipal;//**
 
 
     public MenuTransportista(TransportistaController transportistaController, PedidoController pedidoController) {
         this.transportistaController = transportistaController;
         this.pedidoController = pedidoController;
+        this.regresarMenuPrincipal = true;//**
+
     }
 
     public void mostrarMenuTransportista() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println(" ");
-        System.out.println("Por favor ingrese la opción que desee: ");
-        System.out.println(" ");
-        System.out.println("1. Crear transportista");
-        System.out.println("2. Ver transportistas");
-        System.out.println("3. Buscar transportista por CUIT");
-        System.out.println("4. Editar transportista");
-        System.out.println("5. Eliminar transportista");
-        System.out.println("6. Informar posición del pedido");
-        System.out.println("7. Salir del Menu de transportista");
-        System.out.println("----------------------------");
+        do {//**
 
-        String opcion = scanner.nextLine();
+            System.out.println(" ");
+            System.out.println("Por favor ingrese la opción que desee: ");
+            System.out.println(" ");
+            System.out.println("1. Crear transportista");
+            System.out.println("2. Ver transportistas");
+            System.out.println("3. Buscar transportista por CUIT");
+            System.out.println("4. Editar transportista");
+            System.out.println("5. Eliminar transportista");
+            System.out.println("6. Informar posición del pedido");
+            System.out.println("7. Salir del Menu de transportista");
+            System.out.println("----------------------------");
 
+            String opcion = scanner.nextLine();
 
 
             switch (opcion) {
@@ -74,19 +78,21 @@ public class MenuTransportista {
                     break;
                 case "2":
                     System.out.println("============== La lista actual de Transportistas es: ===============");
-                    for (Transportista tr: transportistaController.findAll()) {
+                    for (Transportista tr : transportistaController.findAll()) {
                         System.out.println(tr.toString());
                     }
                     break;
                 case "3":
-                    for (Transportista tr: transportistaController.findAll()
-                    ) {System.out.println(tr.toString());}
+                    for (Transportista tr : transportistaController.findAll()
+                    ) {
+                        System.out.println(tr.toString());
+                    }
                     System.out.println("Por favor ingrese el CUIT del transportista");
                     String cuitTransportista = scanner.nextLine();
 
                     Transportista tr = transportistaController.findOne(cuitTransportista);
-                    if (tr!=null){
-                        System.out.println("El transportista buscado es: "+tr.toString());
+                    if (tr != null) {
+                        System.out.println("El transportista buscado es: " + tr.toString());
                     } else {
                         System.out.println("El cuit ingresado no corresponde a ningún transportista");
                     }
@@ -139,34 +145,44 @@ public class MenuTransportista {
                     }
                     break;
                 case "6":
-                    System.out.println("Por favor ingrese el numero del pedido para informar su posición");
-                    String nroPedido = scanner.nextLine();
-                    Pedido pedidoEncontrado = pedidoController.buscarPedidoPorNumero(nroPedido);
+                System.out.println("Por favor ingrese el numero del pedido para informar su posición");
+                String nroPedido = scanner.nextLine();
+                Pedido pedidoEncontrado = pedidoController.buscarPedidoPorNumero(nroPedido);
+
+                if (pedidoEncontrado != null) {
                     System.out.println("Por favor ingrese su cuit para determinar si el pedido le corresponde");
                     String cuitTransportistaPedido = scanner.nextLine();
 
-
-                    if (pedidoEncontrado.getTransportista().getCuit().equals(cuitTransportistaPedido)) {
+                    if (pedidoEncontrado.getTransportista() != null && pedidoEncontrado.getTransportista().getCuit().equals(cuitTransportistaPedido)) {
                         System.out.println("Por favor ingrese la nueva latitud: ");
                         double latitud = scanner.nextDouble();
                         System.out.println("Por favor ingrese la nueva longitud: ");
                         double longitud = scanner.nextDouble();
                         pedidoEncontrado.getSeguimiento().setLatitud(latitud);
                         pedidoEncontrado.getSeguimiento().setLongitud(longitud);
+                        System.out.println(" la latitud del pedido es "+pedidoEncontrado.getSeguimiento().getLatitud());
+                        System.out.println(" ");
+                        System.out.println(" la longitud del pedido es "+pedidoEncontrado.getSeguimiento().getLongitud());
                     } else {
-                        System.out.println("Ocurrió un error, vuelva a intentarlo nuevamente");
+                        System.out.println("El pedido no le corresponde o el transportista no está definido.");
                     }
+                } else {
+                    System.out.println("No se encontró ningún pedido con el número ingresado.");
+                }
+                break;
                 case "7":
                     System.out.println("Ha salido exitosamente");
-                    MenuPrincipal menuPrincipal = new MenuPrincipal();
-                    menuPrincipal.mostrarMenuPrincipal();
+                    this.regresarMenuPrincipal = true;
                     break;
 
                 default:
                     System.out.println("Opción inválida");
                     break;
             }
+        }while (!regresarMenuPrincipal);//**
 
 
+    }public void setRegresarMenuPrincipal(boolean regresarMenuPrincipal) {
+        this.regresarMenuPrincipal = regresarMenuPrincipal;
     }
 }
