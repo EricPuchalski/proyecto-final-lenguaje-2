@@ -2,9 +2,11 @@ package org.example.view;
 
 
 import org.example.controller.ClienteController;
+
 import org.example.controller.InformeController;
 import org.example.controller.PedidoController;
 import org.example.model.Cliente;
+
 import org.example.model.Pedido;
 
 import java.util.Scanner;
@@ -14,6 +16,7 @@ public class MenuInforme {
     private ClienteController clienteController;
 
     private PedidoController pedidoController;
+
     private boolean regresarMenuPrincipal;//**
 
     public MenuInforme(InformeController informeController, ClienteController clienteController, PedidoController pedidoController) {
@@ -43,7 +46,9 @@ public class MenuInforme {
             switch (opcion) {
                 case "1":
                     System.out.println("Por favor ingrese el código de la sucursal para obtener la cantidad de pedidos realizados:");
+
                     String codigoSucursal = scanner.nextLine();
+
                     int cantidadPedidos = informeController.obtenerCantidadPedidosPorSucursal(codigoSucursal);
                     System.out.println("La cantidad de pedidos realizados por la sucursal con código " + codigoSucursal + " es: " + cantidadPedidos);
                     break;
