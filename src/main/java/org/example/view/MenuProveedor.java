@@ -43,6 +43,7 @@ public class MenuProveedor {
                         System.out.println("Inrese el numero de email del proveedor: ");
                         String email = leer.nextLine();
                         proveedorController.create(new Proveedor(cuit, nombre, direc, tel, email));
+                        System.out.println(" Proveedor creado correctamente");
                     }else{
                         System.out.println("El proveedor ya existe");
                     }
@@ -88,7 +89,12 @@ public class MenuProveedor {
                 case 5:
                     System.out.println("Ingrese el C.U.I.T. del proveedor a eliminar: ");
                     String cuitd = leer.nextLine();
+                    Proveedor proveedorEliminado=proveedorController.findOne(cuitd);
+                    if(proveedorEliminado!=null){
                     proveedorController.delete(cuitd);
+                    System.out.println("Proveedor eliminado correctamente");}else {
+                        System.out.println("El proveedor ingresado no existe");
+                    }
                     break;
 
                 case 6:

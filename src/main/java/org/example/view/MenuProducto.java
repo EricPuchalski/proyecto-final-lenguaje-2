@@ -198,6 +198,9 @@ public class MenuProducto {
                                 break;
                         }
                         proveedorController.findAll();
+                        for (Proveedor pr: proveedorController.findAll()) {
+                            System.out.println(pr.toString());
+                        }
                         System.out.println("Por favor ingrese el cuit del nuevo proveedor");
                         String cuitNuevoProveedor = scanner.nextLine();
                         Proveedor proveedorNuevo = proveedorController.findOne(cuitNuevoProveedor);

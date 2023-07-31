@@ -13,7 +13,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class MenuPedido {
-     PedidoController pedidoController;
+    private boolean regresarMenuPrincipal;//**
+    PedidoController pedidoController;
      DepositoController depositoController;
      SectorRepository sectorRepository;
      TransportistaController transportistaController;
@@ -34,6 +35,7 @@ public class MenuPedido {
         this.productoController = new ProductoController(new ProductoService(new ProductoRepository()));
         this.clienteController = new ClienteController(new ClienteService(new ClienteRepository()));
         this.empleadoController = new EmpleadoController(new EmpleadoService(new EmpleadoRepository()));
+        this.regresarMenuPrincipal = true;//**
     }
 
     public void mostrarMenuPedido() {
@@ -41,32 +43,33 @@ public class MenuPedido {
 
         Scanner scanner = new Scanner(System.in);
 
+            do {//**
+                System.out.println("Por favor ingrese la opción que desee: ");
+                System.out.println("1. Crear Pedido");
+                System.out.println("2. Procesar pedido");
+                System.out.println("3. Completar pedido");
+                System.out.println("4. Enviar a despacho");
+                System.out.println("5. Despachar pedido");
+                System.out.println("6. Transitar pedido");
+                System.out.println("7. Enviar a sucursal destino");
+                System.out.println("8. Entregar pedido");
+                System.out.println("9. Calcular distancia del pedido");
+                System.out.println("10.Ver todos los pedidos ");
+                System.out.println("11. Salir del menu pedido");
+                System.out.println("----------------------------");
 
-            System.out.println("Por favor ingrese la opción que desee: ");
-            System.out.println("1. Crear Pedido");
-            System.out.println("2. Procesar pedido");
-            System.out.println("3. Completar pedido");
-            System.out.println("4. Enviar a despacho");
-            System.out.println("5. Despachar pedido");
-            System.out.println("6. Transitar pedido");
-            System.out.println("7. Enviar a sucursal destino");
-            System.out.println("8. Entregar pedido");
-            System.out.println("9. Calcular distancia del pedido");
-            System.out.println("10. Salir del menu pedido");
-            System.out.println("----------------------------");
-
-            int opcion = scanner.nextInt();
-            scanner.nextLine();
+                int opcion = scanner.nextInt();
+                scanner.nextLine();
 
 
-                switch(opcion) {
+                switch (opcion) {
                     case 1:
                         System.out.println("Por favor ingrese el numero del pedido");
                         String numeroPedido = scanner.nextLine();
 
                         System.out.println("Por favor seleccione el cliente del pedido");
-                        for (Cliente cl:clienteController.findAll()
-                             ) {
+                        for (Cliente cl : clienteController.findAll()
+                        ) {
                             System.out.println(cl.toString());
                         }
 
@@ -75,8 +78,8 @@ public class MenuPedido {
 
                         System.out.println("Por favor seleccione el deposito de origen");
                         System.out.println("----------------------------");
-                        for (Deposito dp:  depositoController.findAll()
-                             ) {
+                        for (Deposito dp : depositoController.findAll()
+                        ) {
                             System.out.println(dp.toString());
                         }
 
@@ -87,7 +90,7 @@ public class MenuPedido {
 
                         System.out.println("Por favor seleccione el deposito de destino");
                         System.out.println("----------------------------");
-                        for (Deposito dp:  depositoController.findAll()
+                        for (Deposito dp : depositoController.findAll()
                         ) {
                             System.out.println(dp.toString());
                         }
@@ -96,7 +99,7 @@ public class MenuPedido {
                         Deposito depositoDestino = depositoController.findOne(codigoDepositoDestino);
 
                         System.out.println("Por favor seleccione el transportista");
-                        for (Transportista tr:  transportistaController.findAll()
+                        for (Transportista tr : transportistaController.findAll()
                         ) {
                             System.out.println(tr.toString());
                         }
@@ -112,16 +115,16 @@ public class MenuPedido {
 
                             do {
                                 System.out.println("Por favor ingrese el producto");
-                                for (Producto pr: productoController.findAll()
-                                     ) {
+                                for (Producto pr : productoController.findAll()
+                                ) {
                                     System.out.println(pr.toString());
                                 }
                                 String codigoProducto = scanner.nextLine();
-                                int cantidadProducto = 0 ;
-                                try{
+                                int cantidadProducto = 0;
+                                try {
                                     System.out.println("Por favor ingrese la cantidad");
                                     cantidadProducto = scanner.nextInt();
-                                } catch(Exception e){
+                                } catch (Exception e) {
                                     System.out.println("Se produjo un error con la cantidad introducida");
                                 }
 
@@ -157,6 +160,10 @@ public class MenuPedido {
                         String nroPedido = scanner.nextLine();
                         System.out.println("Por favor asigne el empleado a cargo");
                         empleadoController.findAll();
+                        for (Empleado empleadoRecorrido : empleadoController.findAll()
+                        ) {
+                            System.out.println(empleadoRecorrido.toString());
+                        }
                         String cuitEmpleado = scanner.nextLine();
 
                         Pedido pedidoEncontrado = pedidoController.buscarPedidoPorNumero(nroPedido);
@@ -230,8 +237,8 @@ public class MenuPedido {
                         System.out.println(" Por favor ingrese el numero del pedido para enviarlo a entrega ");
                         String numeroPedidoEnviarAEntrega = scanner.nextLine();
                         System.out.println("Por favor ingrese el CUIT del empleado receptor:");
-                        for (Empleado ep: empleadoController.findAll()
-                             ) {
+                        for (Empleado ep : empleadoController.findAll()
+                        ) {
                             System.out.println(ep.toString());
                         }
                         String cuitEmpleadoReceptor = scanner.nextLine();
@@ -258,10 +265,10 @@ public class MenuPedido {
 
                             for (LineaPedido lineaPedido : lineasPedido) {
                                 int calificacion = 0;
-                                try{
+                                try {
                                     System.out.println("Por favor ingrese la calificación del proveedor del producto " + lineaPedido.getProducto().getNombre() + " :");
                                     calificacion = scanner.nextInt();
-                                } catch (Exception e){
+                                } catch (Exception e) {
                                     System.out.println("Se produjo un error en la calificación");
                                     break;
                                 }
@@ -295,19 +302,27 @@ public class MenuPedido {
                             System.out.println("El pedido no se encontró, intentelo nuevamente");
                             System.out.println("----------------------------");
                         }
-
+                        break;
                     case 10:
+                        List<Pedido> pedidos = pedidoController.mostrarTodosLosPedidos();
+                        for (Pedido pedido : pedidos) {
+                            System.out.println(pedido.toString()); // O utiliza el método que imprime la información relevante del pedido
+                        }
+                        break;
+                    case 11:
                         System.out.println("Ha salido exitosamente");
-                        MenuPrincipal menuPrincipal = new MenuPrincipal();
-                        menuPrincipal.mostrarMenuPrincipal();
+                        this.regresarMenuPrincipal = true;
                         break;
                     default:
                         System.out.println("Opción inválida. Por favor, ingrese una opción válida del menú.");
                         break;
                 }
+            }while (!regresarMenuPrincipal);//**
 
     }
-
+    public void setRegresarMenuPrincipal(boolean regresarMenuPrincipal) {
+        this.regresarMenuPrincipal = regresarMenuPrincipal;
+    }
 
 
 }

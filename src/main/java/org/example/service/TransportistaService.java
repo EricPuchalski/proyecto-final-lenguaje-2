@@ -20,7 +20,7 @@ public class TransportistaService implements CRUD<Transportista>{
 
     @Override
     public void save(Transportista transportista) {
-        if (findOne(transportista.getCuit())!=null) {
+        if (transportistaRepository.findOne(transportista.getCuit())== null) {
             transportistaRepository.save(transportista);
         }
     }

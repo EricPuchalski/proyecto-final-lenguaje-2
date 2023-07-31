@@ -8,18 +8,17 @@ import java.util.Scanner;
 
 public class MenuPrincipal {
 
-     MenuCliente menuCliente;
-
-     MenuTransportista menuTransportista;
-     MenuProducto menuProducto;
-     MenuPedido menuPedido;
-     MenuInforme menuInforme;
-     MenuProveedor menuProveedor;
+    MenuCliente menuCliente;
+    MenuTransportista menuTransportista;
+    MenuProducto menuProducto;
+    MenuPedido menuPedido;
+    MenuInforme menuInforme;
+    MenuProveedor menuProveedor;
     private String opcion;
 
     public MenuPrincipal() {
         this.menuCliente = new MenuCliente(new ClienteController(new ClienteService(new ClienteRepository())));
-        this.menuTransportista = new MenuTransportista(new TransportistaController(new TransportistaService(new TransportistaRepository())),new PedidoController(new PedidoService(new PedidoRepository())));
+        this.menuTransportista = new MenuTransportista(new TransportistaController(new TransportistaService(new TransportistaRepository())), new PedidoController(new PedidoService(new PedidoRepository())));
         this.menuProducto = new MenuProducto(new ProductoController(new ProductoService(new ProductoRepository())));
         this.menuPedido = new MenuPedido(new PedidoController(new PedidoService(new PedidoRepository())));
         this.menuInforme = new MenuInforme(new InformeController(new InformeService(new InformeRepository(new PedidoRepository(), new ClienteRepository(), new ProductoRepository()))), new ClienteController(new ClienteService(new ClienteRepository())), new PedidoController(new PedidoService(new PedidoRepository())));
@@ -28,21 +27,22 @@ public class MenuPrincipal {
 
     public void mostrarMenuPrincipal() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("*** BIENVENIDO AL SITEMA DE LyDE ***");
-        System.out.println("----------------------------");
-        System.out.println("Por favor ingrese la opción que desea gestionar: ");
-        System.out.println("----------------------------");
-        System.out.println("1. Clientes");
-        System.out.println("2. Proveedores");
-        System.out.println("3. Transportistas");
-        System.out.println("4. Productos");
-        System.out.println("5. Pedidos");
-        System.out.println("6. Informes");
-        System.out.println("7. Salir");
-        System.out.println("----------------------------");
-        opcion = scanner.nextLine();
         boolean salir = false;
+
         while (!salir) {
+            System.out.println("*** BIENVENIDO AL SISTEMA DE LyDE ***");
+            System.out.println("----------------------------");
+            System.out.println("Por favor ingrese la opción que desea gestionar: ");
+            System.out.println("----------------------------");
+            System.out.println("1. Clientes");
+            System.out.println("2. Proveedores");
+            System.out.println("3. Transportistas");
+            System.out.println("4. Productos");
+            System.out.println("5. Pedidos");
+            System.out.println("6. Informes");
+            System.out.println("7. Salir");
+            System.out.println("----------------------------");
+            opcion = scanner.nextLine();
 
             switch (opcion) {
                 case "1":
@@ -68,10 +68,9 @@ public class MenuPrincipal {
                     salir = true;
                     break;
                 default:
-                    System.out.println("Opcion invalida");
+                    System.out.println("Opción inválida. Por favor, ingrese una opción válida.");
                     break;
             }
-
         }
     }
 }
