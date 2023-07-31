@@ -66,6 +66,7 @@ public class MenuTransportista {
                                 System.out.println("No existe ese tipo de transportista");
                         }
                         transportistaController.create(new Transportista(cuit, nombre, telefono, email, tipoTransportista));
+                        System.out.println(" Transportista creado exitosamente ");
                     } else {
                         System.out.println("El transportista ya existe");
                     }
@@ -132,6 +133,7 @@ public class MenuTransportista {
                     String cuitTransportistaEliminado = scanner.nextLine();
                     if (transportistaController.findOne(cuitTransportistaEliminado) != null) {
                         transportistaController.delete(cuitTransportistaEliminado);
+                        System.out.println(" Transportista eliminado exitosamente");
                     } else {
                         System.out.println("El transportista ingresado no existe");
                     }

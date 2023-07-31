@@ -9,6 +9,7 @@ import org.example.model.Proveedor;
 import org.example.repository.ProveedorRepository;
 import org.example.service.ProveedorService;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MenuProducto {
@@ -50,14 +51,20 @@ public class MenuProducto {
                     if (productoController.findOne(codigo) == null) {
                         System.out.println("Por favor ingrese el nombre");
                         nombre = scanner.nextLine();
-                        System.out.println("Por favor ingrese el peso");
-                        peso = scanner.nextDouble();
-                        System.out.println("Por favor ingrese la altura");
-                        alturaProducto = scanner.nextDouble();
-                        System.out.println("Por favor ingrese el ancho del producto");
-                        anchoProducto = scanner.nextDouble();
-                        System.out.println("Por favor ingrese el largo del producto");
-                        largoProducto = scanner.nextDouble();
+                        try{
+                            System.out.println("Por favor ingrese el peso");
+                            peso = scanner.nextDouble();
+                            System.out.println("Por favor ingrese la altura");
+                            alturaProducto = scanner.nextDouble();
+                            System.out.println("Por favor ingrese el ancho del producto");
+                            anchoProducto = scanner.nextDouble();
+                            System.out.println("Por favor ingrese el largo del producto");
+                            largoProducto = scanner.nextDouble();
+                        } catch(Exception e){
+                            System.out.println("Se produjo un error con los datos introducidos");
+                            break;
+                        }
+
                     } else {
                         System.out.println("----------------------------");
                         System.out.println("El producto ingresado ya existe");
@@ -137,14 +144,24 @@ public class MenuProducto {
                     if (productoController.findOne(codigoProductoEditado) != null) {
                         System.out.println("Por favor ingrese el nuevo nombre");
                         String nuevoNombre = scanner.nextLine();
-                        System.out.println("Por favor ingrese el nuevo peso");
-                        Double nuevoPeso = scanner.nextDouble();
-                        System.out.println("Por favor ingrese la nueva altura");
-                        Double nuevaAltura = scanner.nextDouble();
-                        System.out.println("Por favor ingrese el nuevo ancho del producto");
-                        Double nuevoAncho = scanner.nextDouble();
-                        System.out.println("Por favor ingrese el nuevo largo del producto");
-                        Double nuevoLargo = scanner.nextDouble();
+                        Double nuevoPeso = 0.0;
+                        Double nuevaAltura = 0.0;
+                        Double nuevoAncho = 0.0;
+                        Double nuevoLargo = 0.0;
+                        try{
+                            System.out.println("Por favor ingrese el nuevo peso");
+                             nuevoPeso = scanner.nextDouble();
+                            System.out.println("Por favor ingrese la nueva altura");
+                             nuevaAltura = scanner.nextDouble();
+                            System.out.println("Por favor ingrese el nuevo ancho del producto");
+                             nuevoAncho = scanner.nextDouble();
+                            System.out.println("Por favor ingrese el nuevo largo del producto");
+                             nuevoLargo = scanner.nextDouble();
+                        } catch(Exception e){
+                            System.out.println("Se produjo un error con los datos introducidos");
+                            break;
+                        }
+
                         scanner.nextLine();
                         System.out.println("Ingrese la nueva categoria del producto: ");
                         System.out.println("-----------------------------");

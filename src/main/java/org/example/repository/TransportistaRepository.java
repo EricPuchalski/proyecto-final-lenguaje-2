@@ -45,7 +45,13 @@ public class TransportistaRepository implements CRUD<Transportista>{
 
     @Override
     public void upDate(Transportista transportista) {
-
+        Transportista transportistaExistente = findOne(transportista.getCuit());
+        if (transportistaExistente != null) {
+            transportistaExistente.setNombre(transportista.getNombre());
+            transportistaExistente.setTelefono(transportista.getTelefono());
+            transportistaExistente.setEmail(transportista.getEmail());
+            transportistaExistente.setTipo(transportista.getTipo());
+        }
     }
 
     @Override
