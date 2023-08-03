@@ -36,8 +36,9 @@ public class Main {
         InformeService informeService=new InformeService(informeRepository);
         InformeController informeController=new InformeController(informeService);
         MenuInforme menuInforme=new MenuInforme(informeController, clienteController, pedidoController);
+        MenuDeposito menuDeposito=new MenuDeposito(depositoController);
 
-        MenuPrincipal menuPrincipal = new MenuPrincipal(menuCliente, menuTransportista, menuProducto, menuPedido,menuInforme,new MenuProveedor(new ProveedorController(new ProveedorService(new ProveedorRepository()))));
+        MenuPrincipal menuPrincipal = new MenuPrincipal(menuCliente, menuTransportista, menuProducto, menuPedido,menuInforme,new MenuProveedor(new ProveedorController(new ProveedorService(new ProveedorRepository()))),menuDeposito);
 
 
         menuPrincipal.mostrarMenuPrincipal();
