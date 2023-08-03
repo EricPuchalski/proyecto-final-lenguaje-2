@@ -16,12 +16,13 @@ public class MenuPrincipal {
     MenuProveedor menuProveedor;
     private String opcion;
 
-    public MenuPrincipal(MenuCliente menuCliente, MenuTransportista menuTransportista, MenuProducto menuProducto, MenuPedido menuPedido,MenuInforme menuInforme) {
+    public MenuPrincipal(MenuCliente menuCliente, MenuTransportista menuTransportista, MenuProducto menuProducto, MenuPedido menuPedido,MenuInforme menuInforme,MenuProveedor menuProveedor) {
         this.menuCliente = menuCliente;
         this.menuTransportista = menuTransportista;
         this.menuProducto = menuProducto;
         this.menuPedido = menuPedido;
         this.menuInforme=menuInforme;
+        this.menuProveedor=menuProveedor;
     }
 
     public void mostrarMenuPrincipal() {
