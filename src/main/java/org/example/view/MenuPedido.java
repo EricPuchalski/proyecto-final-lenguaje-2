@@ -70,6 +70,12 @@ public class MenuPedido {
                     case 1:
                         System.out.println("Por favor ingrese el numero del pedido");
                         String numeroPedido = scanner.nextLine();
+                        Pedido pedidoExiste=pedidoController.buscarPedidoPorNumero(numeroPedido);
+                        if(pedidoExiste!=null){
+                            System.out.println(" El pedido ya existe no se puede crear un pedido con el mismo numero ");
+                            break;
+                        }
+
 
                         System.out.println("Por favor seleccione el cliente del pedido");
                         for (Cliente cl : clienteController.findAll()
