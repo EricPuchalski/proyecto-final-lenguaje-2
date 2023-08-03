@@ -34,7 +34,7 @@ public class MenuDeposito {
                 case "1":
                     System.out.println("Por favor ingrese el código del depósito");
                     String codigo = scanner.nextLine();
-                    if (depositoController.findOne(codigo) != null) {
+                    if (depositoController.findOne(codigo) == null) {
                         System.out.println("Por favor ingrese el nombre del depósito");
                         String nombre = scanner.nextLine();
                         System.out.println("Por favor ingrese la dirección del depósito");

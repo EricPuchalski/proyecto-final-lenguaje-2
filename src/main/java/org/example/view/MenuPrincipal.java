@@ -14,15 +14,17 @@ public class MenuPrincipal {
     MenuPedido menuPedido;
     MenuInforme menuInforme;
     MenuProveedor menuProveedor;
+    MenuDeposito menuDeposito;
     private String opcion;
 
-    public MenuPrincipal(MenuCliente menuCliente, MenuTransportista menuTransportista, MenuProducto menuProducto, MenuPedido menuPedido,MenuInforme menuInforme,MenuProveedor menuProveedor) {
+    public MenuPrincipal(MenuCliente menuCliente, MenuTransportista menuTransportista, MenuProducto menuProducto, MenuPedido menuPedido,MenuInforme menuInforme,MenuProveedor menuProveedor, MenuDeposito menuDeposito) {
         this.menuCliente = menuCliente;
         this.menuTransportista = menuTransportista;
         this.menuProducto = menuProducto;
         this.menuPedido = menuPedido;
         this.menuInforme=menuInforme;
         this.menuProveedor=menuProveedor;
+        this.menuDeposito=menuDeposito;
     }
 
     public void mostrarMenuPrincipal() {
@@ -39,8 +41,9 @@ public class MenuPrincipal {
             System.out.println("3. Transportistas");
             System.out.println("4. Productos");
             System.out.println("5. Pedidos");
-            System.out.println("6. Informes");
-            System.out.println("7. Salir");
+            System.out.println("6. Depositos");
+            System.out.println("7. Informes");
+            System.out.println("8. Salir");
             System.out.println("----------------------------");
             opcion = scanner.nextLine();
 
@@ -61,9 +64,11 @@ public class MenuPrincipal {
                     menuPedido.mostrarMenuPedido();
                     break;
                 case "6":
+                    menuDeposito.mostrarMenuDeposito();
+                case "7":
                     menuInforme.mostrarMenuInforme();
                     break;
-                case "7":
+                case "8":
                     System.out.println("Ha salido exitosamente");
                     salir = true;
                     break;
