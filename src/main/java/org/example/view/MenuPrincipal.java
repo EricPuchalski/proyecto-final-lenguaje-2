@@ -14,6 +14,7 @@ public class MenuPrincipal {
     MenuPedido menuPedido;
     MenuInforme menuInforme;
     MenuProveedor menuProveedor;
+
     private String opcion;
 
     public MenuPrincipal(MenuCliente menuCliente, MenuTransportista menuTransportista, MenuProducto menuProducto, MenuPedido menuPedido,MenuInforme menuInforme,MenuProveedor menuProveedor) {
