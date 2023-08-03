@@ -16,13 +16,13 @@ public class MenuPrincipal {
     MenuProveedor menuProveedor;
     private String opcion;
 
-    public MenuPrincipal() {
-        this.menuCliente = new MenuCliente(new ClienteController(new ClienteService(new ClienteRepository())));
-        this.menuTransportista = new MenuTransportista(new TransportistaController(new TransportistaService(new TransportistaRepository())), new PedidoController(new PedidoService(new PedidoRepository())));
-        this.menuProducto = new MenuProducto(new ProductoController(new ProductoService(new ProductoRepository())));
-        this.menuPedido = new MenuPedido(new PedidoController(new PedidoService(new PedidoRepository())));
-        this.menuInforme = new MenuInforme(new InformeController(new InformeService(new InformeRepository(new PedidoRepository(), new ClienteRepository(), new ProductoRepository()))), new ClienteController(new ClienteService(new ClienteRepository())), new PedidoController(new PedidoService(new PedidoRepository())));
-        this.menuProveedor = new MenuProveedor(new ProveedorController(new ProveedorService(new ProveedorRepository())));
+    public MenuPrincipal(MenuCliente menuCliente, MenuTransportista menuTransportista, MenuProducto menuProducto, MenuPedido menuPedido,MenuInforme menuInforme,MenuProveedor menuProveedor) {
+        this.menuCliente = menuCliente;
+        this.menuTransportista = menuTransportista;
+        this.menuProducto = menuProducto;
+        this.menuPedido = menuPedido;
+        this.menuInforme=menuInforme;
+        this.menuProveedor=menuProveedor;
     }
 
     public void mostrarMenuPrincipal() {

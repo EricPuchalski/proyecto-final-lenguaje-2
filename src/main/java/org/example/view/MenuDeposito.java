@@ -11,6 +11,7 @@ public class MenuDeposito {
 
     private DepositoController depositoController;
     private String opcion;
+    private boolean regresarMenuPrincipal;//**
 
     public MenuDeposito(DepositoController depositoController) {
         this.depositoController = depositoController;
@@ -18,6 +19,7 @@ public class MenuDeposito {
 
     public void mostrarMenuDeposito() {
         Scanner scanner = new Scanner(System.in);
+        do {//**
         System.out.println("Por favor ingrese la opción que desee: ");
         System.out.println("1. Crear depósito");
         System.out.println("2. Ver depósitos");
@@ -106,13 +108,14 @@ public class MenuDeposito {
                     break;
                 case "6":
                     System.out.println("Ha salido exitosamente");
-                    MenuPrincipal menuPrincipal = new MenuPrincipal();
-                    menuPrincipal.mostrarMenuPrincipal();
+                    this.regresarMenuPrincipal = true;
                     break;
                 default:
                     System.out.println("Opción inválida");
                     break;
             }
-
+        }while (!regresarMenuPrincipal);//**
+                        }public void setRegresarMenuPrincipal(boolean regresarMenuPrincipal) {
+        this.regresarMenuPrincipal = regresarMenuPrincipal;
     }
 }

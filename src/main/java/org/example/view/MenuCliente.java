@@ -10,23 +10,28 @@ public class MenuCliente {
 
     private ClienteController clienteController;
     private String opcion;
+    private boolean regresarMenuPrincipal;//**
 
     public MenuCliente(ClienteController clienteController) {
         this.clienteController = clienteController;
+        this.regresarMenuPrincipal = true;//**
+
     }
 
     public void mostrarMenuCliente() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Por favor ingrese la opción que desee: ");
-        System.out.println("----------------------------");
-        System.out.println("1. Crear cliente");
-        System.out.println("2. Ver clientes");
-        System.out.println("3. Buscar cliente por CUIT");
-        System.out.println("4. Editar cliente");
-        System.out.println("5. Eliminar cliente");
-        System.out.println("6. Salir del Menu de cliente");
-        System.out.println("----------------------------");
-        this.opcion = scanner.nextLine();
+        do {//**
+
+            System.out.println("Por favor ingrese la opción que desee: ");
+            System.out.println("----------------------------");
+            System.out.println("1. Crear cliente");
+            System.out.println("2. Ver clientes");
+            System.out.println("3. Buscar cliente por CUIT");
+            System.out.println("4. Editar cliente");
+            System.out.println("5. Eliminar cliente");
+            System.out.println("6. Salir del Menu de cliente");
+            System.out.println("----------------------------");
+            this.opcion = scanner.nextLine();
 
             switch (opcion) {
                 case "1":
@@ -52,7 +57,7 @@ public class MenuCliente {
                     break;
                 case "2":
                     System.out.println("============== La lista de Clientes actuales es: ===============");
-                    for (Cliente cl: clienteController.findAll()) {
+                    for (Cliente cl : clienteController.findAll()) {
                         System.out.println(cl.toString());
                     }
 
@@ -105,13 +110,18 @@ public class MenuCliente {
                     break;
                 case "6":
                     System.out.println("Ha salido exitosamente");
-                    MenuPrincipal menuPrincipal = new MenuPrincipal();
-                    menuPrincipal.mostrarMenuPrincipal();
+                    this.regresarMenuPrincipal = true;
+
                     break;
                 default:
                     System.out.println("Opción inválida");
                     break;
 
-        }
+            }
+        } while (!regresarMenuPrincipal);//**
+    }
+
+    public void setRegresarMenuPrincipal(boolean regresarMenuPrincipal) {
+        this.regresarMenuPrincipal = regresarMenuPrincipal;
     }
 }
